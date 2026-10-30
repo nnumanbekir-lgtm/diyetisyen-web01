@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Dyt. Emre Çelik · Obezite Cerrahisi Sonrası Beslenme</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Lexend:wght@300;400;500;600&display=swap">
+<style>
+/* Layout: calm horizon. Hero with "which phase am I in" date tool, vertical journey timeline, golden rules grid, daily sip & protein tracker */
+:root{
+ --bg:#f6f8fb; --white:#ffffff; --ink:#18263a; --muted:#5c6a7d; --line:#dde4ee;
+ --navy:#23395d; --sky:#8fb8de; --sky-soft:#e6f0f9; --peach:#f3ac7f; --peach-soft:#fdeee4; --ok:#3f9a76;
+ --disp:'Newsreader',Georgia,serif; --body:'Lexend',system-ui,sans-serif;
+ color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-weight:300;font-size:16.5px;line-height:1.65;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.wrap{max-width:1140px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--disp);font-weight:500;line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.01em}
+p{margin:0}
+b,strong{font-weight:500}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sky);outline-offset:3px}
+.demo-bar{font-size:12.5px;background:var(--navy);color:#c8d6ea}
+.demo-bar .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding-block:7px}
+.demo-bar a{color:var(--peach);font-weight:500}
+nav{background:var(--white);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:16px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo svg{width:38px;height:38px}
+.logo b{font-family:var(--disp);font-size:1.35rem;display:block;line-height:1.1}
+.logo small{font-size:12px;color:var(--muted)}
+.nl{display:flex;gap:26px;align-items:center;font-size:14.5px;font-weight:400}
+.nl a{text-decoration:none;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;gap:8px;font:inherit;font-weight:500;padding:13px 22px;border-radius:12px;border:0;cursor:pointer;text-decoration:none;background:var(--navy);color:#fff}
+.btn.p{background:var(--peach);color:var(--ink)}
+.btn.o{background:transparent;color:var(--navy);box-shadow:inset 0 0 0 1.5px var(--line)}
+.nl .btn{color:#fff;padding:10px 18px}
+
+/* hero horizon */
+.hero{background:linear-gradient(180deg,var(--sky-soft) 0%,var(--bg) 100%);position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;left:50%;bottom:-520px;width:1100px;height:600px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(closest-side,#fbd7bf 0,#fbd7bf00 100%);opacity:.7;pointer-events:none}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;padding-block:clamp(40px,6vw,80px)}
+.hero .wrap>*{min-width:0}
+.eyebrow{font-size:13px;font-weight:500;color:var(--navy);letter-spacing:.06em;text-transform:uppercase}
+.hero h1{font-size:clamp(2.5rem,5.8vw,4.4rem);margin-top:14px;color:var(--navy)}
+.hero h1 em{color:#c76a35;font-style:italic}
+.hero .sub{color:var(--muted);font-size:1.1rem;margin-top:18px;max-width:50ch}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.team{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.team span{font-size:13.5px;background:var(--white);border:1px solid var(--line);border-radius:99px;padding:6px 14px}
+
+.tool{background:var(--white);border:1px solid var(--line);border-radius:24px;padding:26px;box-shadow:0 30px 60px -40px rgba(35,57,93,.45)}
+.tool h2{font-size:1.7rem;color:var(--navy)}
+.tool .r2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.tool .r2>div{display:grid;gap:6px;min-width:0}
+label{font-size:13px;font-weight:500;color:var(--muted)}
+input,select,textarea{font:inherit;font-weight:400;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:12px 13px;width:100%}
+input:focus,select:focus,textarea:focus{border-color:var(--navy);outline:none;background:#fff}
+.now{margin-top:20px;border-top:1px solid var(--line);padding-top:18px;display:grid;gap:14px}
+.now .top{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
+.now .wk{font-family:var(--disp);font-size:3rem;line-height:1;color:var(--navy)}
+.now .wk small{font-family:var(--body);font-size:.9rem;color:var(--muted);margin-left:6px}
+.badge{font-size:13px;font-weight:500;padding:6px 14px;border-radius:99px;background:var(--peach-soft);color:#a8521f}
+.track{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
+.track i{height:8px;border-radius:99px;background:var(--line)}
+.track i.on{background:var(--navy)}
+.track i.cur{background:var(--peach)}
+.tl{display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted)}
+.ex{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14.5px;background:var(--sky-soft);border-radius:14px;padding:14px 16px}
+.ex span{color:var(--muted)}
+.small{font-size:12.5px;color:var(--muted)}
+
+section{padding-block:clamp(56px,8vw,100px)}
+.sh{max-width:700px;margin-bottom:40px}
+.sh h2{font-size:clamp(2.1rem,4.8vw,3.3rem);color:var(--navy);margin-top:10px}
+.sh p{color:var(--muted);margin-top:12px;font-size:1.05rem}
+.center{text-align:center;margin-inline:auto}
+
+/* journey */
+.journey{position:relative;max-width:900px;margin:0 auto;list-style:none;padding:0}
+.journey:before{content:"";position:absolute;left:31px;top:10px;bottom:10px;width:2px;background:linear-gradient(var(--sky),var(--peach))}
+.st{display:grid;grid-template-columns:64px 1fr;gap:22px;padding-bottom:30px;position:relative}
+.st .dot{width:64px;height:64px;border-radius:50%;background:var(--white);border:2px solid var(--sky);display:grid;place-items:center;position:relative;z-index:1}
+.st .dot svg{width:34px;height:34px}
+.st.later .dot{border-color:var(--peach)}
+.card{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:22px 24px;min-width:0}
+.card .when{font-size:12.5px;font-weight:500;color:var(--navy);text-transform:uppercase;letter-spacing:.08em}
+.card h3{font-size:1.6rem;margin-top:4px}
+.card p{color:var(--muted);margin-top:8px}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.facts span{font-size:13px;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:5px 10px}
+.facts span b{color:var(--navy)}
+
+/* rules */
+.rules{background:var(--navy);color:#e8eef7}
+.rules .sh h2{color:#fff}
+.rules .sh p{color:#b6c5dc}
+.rules .eyebrow{color:var(--peach)}
+.rg{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#3a5079;border:1px solid #3a5079;border-radius:20px;overflow:hidden}
+.rule{background:var(--navy);padding:26px;display:grid;gap:8px;align-content:start;min-width:0}
+.rule .n{font-family:var(--disp);font-size:2.6rem;line-height:1;color:var(--peach)}
+.rule .n small{font-family:var(--body);font-size:.9rem;color:#b6c5dc;margin-left:4px}
+.rule h3{font-size:1.35rem;color:#fff}
+.rule p{color:#b6c5dc;font-size:15px}
+
+/* tracker */
+.trk{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.trk>*{min-width:0}
+.panel{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:26px}
+.panel h3{font-size:1.5rem;color:var(--navy)}
+.panel .lead{color:var(--muted);font-size:15px;margin-top:6px}
+.glasses{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;margin-top:20px}
+.glasses button{aspect-ratio:3/4;border:2px solid var(--sky);border-radius:6px 6px 12px 12px;background:#fff;cursor:pointer;position:relative;overflow:hidden;padding:0}
+.glasses button:after{content:"";position:absolute;left:0;right:0;bottom:0;height:0;background:var(--sky);transition:height .25s}
+.glasses button[aria-pressed=true]:after{height:78%}
+.big{font-family:var(--disp);font-size:2.6rem;color:var(--navy);line-height:1;margin-top:18px;font-variant-numeric:tabular-nums}
+.big small{font-family:var(--body);font-size:.9rem;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chips button{font:inherit;font-size:14px;font-weight:400;border:1.5px solid var(--line);background:#fff;border-radius:99px;padding:8px 14px;cursor:pointer;color:var(--ink)}
+.chips button[aria-pressed=true]{background:var(--peach-soft);border-color:var(--peach);color:#8f4317}
+.pbar{height:12px;border-radius:99px;background:var(--bg);overflow:hidden;margin-top:12px}
+.pbar i{display:block;height:100%;width:0;background:var(--peach);border-radius:99px;transition:width .3s}
+
+/* services + about */
+.svc{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.sv{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:24px;display:grid;grid-template-columns:auto 1fr;gap:16px;min-width:0}
+.sv .ic{width:48px;height:48px;border-radius:14px;background:var(--sky-soft);display:grid;place-items:center}
+.sv .ic svg{width:24px;height:24px;stroke:var(--navy)}
+.sv h3{font-size:1.35rem}
+.sv p{color:var(--muted);font-size:15px;margin-top:4px}
+.about{display:grid;grid-template-columns:auto 1fr;gap:34px;align-items:center;background:var(--white);border:1px solid var(--line);border-radius:28px;padding:clamp(22px,4vw,44px)}
+.about>*{min-width:0}
+.pic{width:180px;aspect-ratio:1;border-radius:28px;background:linear-gradient(160deg,var(--sky-soft),var(--peach-soft));display:grid;place-items:center;font-family:var(--disp);font-size:3.4rem;color:var(--navy)}
+.about h2{font-size:clamp(1.8rem,4vw,2.6rem);color:var(--navy)}
+.about p{color:var(--muted);margin-top:12px;max-width:62ch}
+
+/* faq + form */
+.fc{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start}
+.fc>*{min-width:0}
+details{border-bottom:1px solid var(--line);padding-block:16px}
+summary{cursor:pointer;font-weight:500;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";color:var(--navy);font-size:1.3rem;line-height:1}
+details[open] summary:after{content:"−"}
+details p{color:var(--muted);margin-top:8px}
+form.panel{display:grid;gap:12px}
+form.panel h2{font-size:2rem;color:var(--navy)}
+.r2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.r2>div{display:grid;gap:6px;min-width:0}
+.ok{color:var(--ok);font-weight:500}
+.info{display:grid;gap:10px;margin-top:22px;font-size:15px}
+.info span{display:block;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+footer{border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:24px}
+
+@media (max-width:900px){
+ .nl a:not(.btn){display:none}
+ .hero .wrap,.trk,.fc{grid-template-columns:1fr}
+ .rg{grid-template-columns:1fr 1fr}
+ .svc{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+ .rg{grid-template-columns:1fr}
+ .tool .r2,.r2{grid-template-columns:1fr}
+ .journey:before{left:23px}
+ .st{grid-template-columns:48px 1fr;gap:14px}
+ .st .dot{width:48px;height:48px}.st .dot svg{width:26px;height:26px}
+ .glasses{grid-template-columns:repeat(4,1fr)}
+ .about{grid-template-columns:1fr}
+ .pic{width:130px}
+}
+</style></head>
+<body>
+<div class="demo-bar"><div class="wrap"><span>Demo tasarım · Kişi ve bilgiler kurgusaldır</span><a class="dw-back" href="./#ornekler">← Diyetisyen Web portföyü</a></div></div>
+<nav><div class="wrap">
+<a class="logo" href="#"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="#e6f0f9"/><path d="M6 26h28" stroke="#23395d" stroke-width="2" stroke-linecap="round"/><path d="M12 26a8 8 0 0 1 16 0" fill="#f3ac7f"/></svg><span><b>Dyt. Emre Çelik</b><small>Bariatrik beslenme · Keçiören</small></span></a>
+<div class="nl"><a href="#yolculuk">Yol haritası</a><a href="#kurallar">Altın kurallar</a><a href="#takip">Günlük takip</a><a class="btn" href="#randevu">Randevu</a></div>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+<div>
+<p class="eyebrow">Tüp mide · Gastrik bypass · Revizyon</p>
+<h1>Ameliyattan sonraki <em>her adımda</em> yanınızdayım.</h1>
+<p class="sub">Obezite cerrahisi öncesi hazırlık ile sonrası sıvı, püre ve katı gıdaya geçiş dönemlerinde, cerrahi ekibinizin protokolüne uygun beslenme takibi.</p>
+<div class="cta"><a class="btn" href="#randevu">Görüşme planla</a><a class="btn o" href="#yolculuk">Yol haritasını gör</a></div>
+<div class="team"><span>Cerrahınızla iletişim halinde</span><span>Ameliyat öncesi ve sonrası</span><span>Online kontrol</span></div>
+</div>
+<form class="tool" onsubmit="return false" aria-label="Hangi evredeyim aracı">
+<h2>Bugün hangi evredesiniz?</h2>
+<div class="r2"><div><label for="sd">Ameliyat tarihi</label><input id="sd" type="date"></div><div><label for="tp">Ameliyat türü</label><select id="tp"><option>Tüp mide</option><option>Gastrik bypass</option><option>Mini bypass</option></select></div></div>
+<div class="now">
+<div class="top"><div class="wk" id="wk">4<small>. hafta</small></div><span class="badge" id="ph">Püre kıvamı</span></div>
+<div class="track" id="trk"><i></i><i></i><i></i><i></i><i></i></div>
+<div class="tl"><span>Sıvı</span><span>Püre</span><span>Yumuşak</span><span>Normal</span><span>Koruma</span></div>
+<div class="ex"><span>Örnek öğün</span><b id="ex">Süzme yoğurt ve ezilmiş mercimek çorbası</b><span>Protein hedefi</span><b id="pr">60 g / gün</b></div>
+<p class="small">Süreler genel bilgidir. Cerrahi ekibinizin verdiği protokol her zaman önceliklidir.</p>
+</div>
+</form>
+</div></header>
+
+<section id="yolculuk"><div class="wrap">
+<div class="sh center" style="text-align:center"><p class="eyebrow">Yol haritası</p><h2>Ameliyat öncesinden birinci yıla</h2><p>Her geçişi birlikte planlıyor, protein ve sıvı hedeflerinizi evreye göre güncelliyoruz.</p></div>
+<ol class="journey">
+<li class="st"><span class="dot"><svg viewBox="0 0 34 34" fill="none" stroke="#23395d" stroke-width="1.6" stroke-linecap="round"><rect x="7" y="6" width="20" height="24" rx="3"/><path d="M12 4h10v5H12zM12 16h10M12 21h7"/></svg></span><div class="card"><span class="when">Ameliyattan 2 hafta önce</span><h3>Hazırlık</h3><p>Karaciğeri küçültmeye yönelik düşük karbonhidratlı, yüksek proteinli diyet ve yeni yeme alışkanlıklarının provası.</p><div class="facts"><span>Protein <b>yüksek</b></span><span>Karbonhidrat <b>düşük</b></span></div></div></li>
+<li class="st"><span class="dot"><svg viewBox="0 0 34 34" fill="none" stroke="#23395d" stroke-width="1.6" stroke-linecap="round"><path d="M10 8h14l-2 20H12z"/><path d="M11 15h12" stroke="#8fb8de" stroke-width="5"/></svg></span><div class="card"><span class="when">1–2. hafta</span><h3>Berrak ve tam sıvılar</h3><p>Su, et suyu, ayran, protein içecekleri. Küçük yudumlarla, gün boyuna yayarak.</p><div class="facts"><span>Sıvı <b>1,5 L</b></span><span>Yudum <b>30 ml</b></span></div></div></li>
+<li class="st"><span class="dot"><svg viewBox="0 0 34 34" fill="none" stroke="#23395d" stroke-width="1.6" stroke-linecap="round"><path d="M5 16h24a12 10 0 0 1-24 0z"/><path d="M10 13c2-3 4 0 6-3s4 0 6-3"/></svg></span><div class="card"><span class="when">3–4. hafta</span><h3>Püre kıvamı</h3><p>Süzme yoğurt, lor peyniri, ezilmiş baklagil ve sebze püreleri. Önce protein, sonra sebze.</p><div class="facts"><span>Öğün <b>5–6</b></span><span>Porsiyon <b>3–4 yemek kaşığı</b></span></div></div></li>
+<li class="st"><span class="dot"><svg viewBox="0 0 34 34" fill="none" stroke="#23395d" stroke-width="1.6" stroke-linecap="round"><circle cx="17" cy="17" r="12"/><ellipse cx="17" cy="17" rx="5" ry="4" fill="#f3ac7f" stroke="none"/></svg></span><div class="card"><span class="when">5–6. hafta</span><h3>Yumuşak gıdalar</h3><p>Haşlanmış yumurta, ızgara köfte, buğulama balık, iyi pişmiş sebze. Her lokma iyice çiğnenir.</p><div class="facts"><span>Çiğneme <b>20–25 kez</b></span><span>Öğün süresi <b>20 dk</b></span></div></div></li>
+<li class="st later"><span class="dot"><svg viewBox="0 0 34 34" fill="none" stroke="#23395d" stroke-width="1.6" stroke-linecap="round"><circle cx="17" cy="17" r="12"/><path d="M17 17V5A12 12 0 0 1 29 17z" fill="#8fb8de" stroke="none"/><path d="M17 17h12A12 12 0 0 1 17 29z" fill="#f3ac7f" stroke="none"/></svg></span><div class="card"><span class="when">7. haftadan sonra</span><h3>Normal kıvam</h3><p>Protein öncelikli, küçük tabakta dengeli öğünler. Yeni yiyecekler tek tek denenir.</p><div class="facts"><span>Protein <b>60–80 g</b></span><span>Tabak <b>tatlı tabağı</b></span></div></div></li>
+<li class="st later"><span class="dot"><svg viewBox="0 0 34 34" fill="none" stroke="#23395d" stroke-width="1.6" stroke-linecap="round"><path d="M6 24l7-8 5 5 10-11"/><path d="M22 10h6v6"/></svg></span><div class="card"><span class="when">6. ay – 1. yıl</span><h3>Koruma ve takip</h3><p>Hızlı kilo kaybı dönemi sonrası kas korunması, vitamin-mineral tahlilleri ve kalıcı alışkanlıklar.</p><div class="facts"><span>Tahlil <b>3–6 ayda bir</b></span><span>Takviye <b>ömür boyu</b></span></div></div></li>
+</ol>
+</div></section>
+
+<section class="rules" id="kurallar"><div class="wrap">
+<div class="sh"><p class="eyebrow">Altın kurallar</p><h2>Yeni midenizle altı kural</h2><p>Ameliyat sonrasında her öğünde aklınızda tutmanız gerekenler.</p></div>
+<div class="rg">
+<div class="rule"><span class="n">30<small>dk</small></span><h3>Sıvı ve katıyı ayırın</h3><p>Yemekten 30 dakika önce ve sonra sıvı içmeyin.</p></div>
+<div class="rule"><span class="n">1.</span><h3>Önce protein</h3><p>Tabaktaki protein kaynağıyla başlayın, sonra sebzeye geçin.</p></div>
+<div class="rule"><span class="n">20<small>dk</small></span><h3>Yavaş yiyin</h3><p>Her öğünü en az 20 dakikaya yayın, lokmaları küçük tutun.</p></div>
+<div class="rule"><span class="n">1,5<small>L</small></span><h3>Yudum yudum su</h3><p>Gün boyunca küçük yudumlarla en az 1,5 litre sıvı.</p></div>
+<div class="rule"><span class="n">0</span><h3>Gazlı içecek yok</h3><p>Gazlı ve şekerli içecekler mideyi zorlar, kaçının.</p></div>
+<div class="rule"><span class="n">∞</span><h3>Takviyeleri bırakmayın</h3><p>Hekiminizin önerdiği vitamin ve mineraller uzun süreli kullanılır.</p></div>
+</div>
+</div></section>
+
+<section id="takip"><div class="wrap">
+<div class="sh"><p class="eyebrow">Günlük takip</p><h2>Bugün hedeflere ne kadar yakınsınız?</h2><p>Bardaklara ve yediklerinize dokunun. Ameliyat sonrası iki temel hedef: sıvı ve protein.</p></div>
+<div class="trk">
+<div class="panel"><h3>Sıvı</h3><p class="lead">Her bardak 200 ml. Hedef en az 1,5 litre, yani 8 bardak.</p>
+<div class="glasses" id="gl"></div>
+<div class="big" id="wv">0,6 L <small>/ 1,6 L</small></div></div>
+<div class="panel"><h3>Protein</h3><p class="lead">Bugün yediklerinizi seçin. Hedef 60 g.</p>
+<div class="chips" id="ch"></div>
+<div class="big" id="pv">0 g <small>/ 60 g</small></div>
+<div class="pbar"><i id="pb"></i></div></div>
+</div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+<div class="sh"><p class="eyebrow">Hizmetler</p><h2>Süreç boyunca destek</h2></div>
+<div class="svc">
+<div class="sv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 9h6M9 13h6M9 17h3"/></svg></span><div><h3>Ameliyat öncesi hazırlık</h3><p>Karaciğer küçültme diyeti ve yeme alışkanlıklarının ameliyata hazırlanması.</p></div></div>
+<div class="sv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M4 12h16M12 4l8 8-8 8"/></svg></span><div><h3>Evre geçiş planı</h3><p>Sıvı, püre, yumuşak ve normal kıvam dönemleri için günlük menüler.</p></div></div>
+<div class="sv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v18M5 8h14M7 14h10"/></svg></span><div><h3>Protein ve vitamin takibi</h3><p>Kas kaybını önlemeye yönelik protein hedefi ve tahlil izlemi.</p></div></div>
+<div class="sv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span><div><h3>Uzun dönem takip</h3><p>Kilo geri alımını önlemeye yönelik altı aylık ve yıllık kontroller.</p></div></div>
+</div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+<div class="about"><div class="pic">EÇ</div><div><p class="eyebrow">Hakkımda</p><h2 style="margin-top:8px">Ameliyat bir başlangıç, gerisi alışkanlık.</h2>
+<p>Beslenme ve Diyetetik lisansımın ardından obezite cerrahisi geçiren danışanlarla çalışmaya odaklandım. Cerrahi ekibinizin protokolüne uygun hareket ediyor; protein hedefi, sıvı alımı ve vitamin takviyesini her evrede birlikte izliyoruz. Keçiören'deki ofisimde ve online olarak görüşüyorum.</p></div></div>
+</div></section>
+
+<section id="randevu" style="padding-top:0"><div class="wrap fc">
+<div><div class="sh" style="margin-bottom:16px"><p class="eyebrow">Sık sorulanlar</p><h2>Merak edilenler</h2></div>
+<details><summary>Ameliyattan önce mi gelmeliyim, sonra mı?</summary><p>İdeal olan ameliyattan önce tanışmak. Hazırlık diyeti ameliyatın güvenliği için de önemlidir.</p></details>
+<details><summary>Başka hastanede ameliyat oldum, yine çalışabilir miyiz?</summary><p>Evet. Cerrahınızın verdiği protokolü birlikte inceliyor ve ona göre plan yapıyoruz.</p></details>
+<details><summary>Protein tozu kullanmam gerekir mi?</summary><p>İlk haftalarda hedefe ulaşmak için çoğu zaman gerekir. Hangi ürünün uygun olduğunu birlikte değerlendiririz.</p></details>
+<details><summary>Kilo vermem durdu, ne yapmalıyım?</summary><p>Duraklama dönemleri normaldir. Öğün düzeni, protein ve sıvı alımı gözden geçirilerek plan güncellenir.</p></details>
+<div class="info"><div><span>Adres</span>Örnek Mah. Örnek Cad. No: 1, Keçiören / Ankara</div><div><span>Telefon</span>0312 000 00 00</div><div><span>Saatler</span>Hafta içi 09:00–18:00</div></div>
+</div>
+<form class="panel" id="f"><h2>Randevu</h2>
+<div class="r2"><div><label for="ad">Ad soyad</label><input id="ad" required></div><div><label for="tel">Telefon</label><input id="tel" type="tel" required placeholder="05xx xxx xx xx"></div></div>
+<div class="r2"><div><label for="dr">Durum</label><select id="dr"><option>Ameliyat olacağım</option><option>Ameliyat oldum</option><option>Revizyon planlanıyor</option></select></div><div><label for="at">Ameliyat tarihi</label><input id="at" type="date"></div></div>
+<label for="msg">Not</label><textarea id="msg" rows="3" placeholder="Ameliyat türü ve hastane bilgisi"></textarea>
+<p class="small">Sağlık bilgileriniz özel nitelikli kişisel veridir ve yalnızca danışmanlık için kullanılır. KVKK aydınlatma metni bu alana eklenir.</p>
+<button class="btn" type="submit" style="justify-self:start">Gönder</button><p class="ok" hidden>Bu bir demo. Gerçek sitede talebiniz diyetisyene iletilir.</p>
+</form>
+</div></section>
+
+<footer><div class="wrap"><span>© 2026 Dyt. Emre Çelik · Bu sitedeki bilgiler tanı ve tedavi yerine geçmez.</span><span>Tasarım: Diyetisyen Web</span></div></footer>
+<script>
+(function(){
+var sd=document.getElementById('sd');var d0=new Date();d0.setDate(d0.getDate()-24);sd.value=d0.toISOString().slice(0,10);
+var PH=[{max:2,n:'Sıvı dönemi',e:'Et suyu, ayran ve protein içeceği',p:'40–50 g / gün'},{max:4,n:'Püre kıvamı',e:'Süzme yoğurt ve ezilmiş mercimek çorbası',p:'50–60 g / gün'},{max:6,n:'Yumuşak gıdalar',e:'Haşlanmış yumurta ve buğulama sebze',p:'60 g / gün'},{max:26,n:'Normal kıvam',e:'Izgara köfte, salata, iki kaşık bulgur',p:'60–80 g / gün'},{max:999,n:'Koruma dönemi',e:'Protein öncelikli dengeli tabak',p:'60–80 g / gün'}];
+function u(){var t=new Date(sd.value);if(isNaN(t)){return}var days=Math.floor((Date.now()-t.getTime())/864e5);var wk=Math.floor(days/7)+1;
+var wkEl=document.getElementById('wk');
+if(days<0){wkEl.innerHTML=Math.ceil(-days/7)+'<small> hafta kaldı</small>';document.getElementById('ph').textContent='Hazırlık dönemi';document.getElementById('ex').textContent='Yüksek proteinli, düşük karbonhidratlı hazırlık menüsü';document.getElementById('pr').textContent='70 g / gün';mark(-1);return}
+var i=PH.findIndex(function(p){return wk<=p.max});var p=PH[i];
+wkEl.innerHTML=wk+'<small>. hafta</small>';document.getElementById('ph').textContent=p.n;document.getElementById('ex').textContent=p.e;document.getElementById('pr').textContent=p.p;mark(i)}
+function mark(i){document.querySelectorAll('#trk i').forEach(function(el,j){el.className=j<i?'on':j===i?'cur':''})}
+sd.addEventListener('input',u);u();
+var gl=document.getElementById('gl'),n=3;
+for(var k=0;k<8;k++){(function(k){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label',(k+1)+'. bardak');b.onclick=function(){n=(n===k+1)?k:k+1;g()};gl.appendChild(b)})(k)}
+function g(){gl.querySelectorAll('button').forEach(function(b,j){b.setAttribute('aria-pressed',j<n)});document.getElementById('wv').innerHTML=(n*0.2).toFixed(1).replace('.',',')+' L <small>/ 1,6 L</small>'}g();
+var F=[['Protein içeceği',20],['Süzme yoğurt',10],['Yumurta',6],['Lor peyniri',8],['Izgara köfte',14],['Mercimek çorbası',7],['Süt',6],['Tavuk göğsü',15]];
+var ch=document.getElementById('ch'),sel=[0,1];
+F.forEach(function(f,i){var b=document.createElement('button');b.type='button';b.textContent=f[0]+' · '+f[1]+' g';b.onclick=function(){var x=sel.indexOf(i);if(x>-1)sel.splice(x,1);else sel.push(i);pr()};ch.appendChild(b)});
+function pr(){var s=0;ch.querySelectorAll('button').forEach(function(b,i){var on=sel.indexOf(i)>-1;b.setAttribute('aria-pressed',on);if(on)s+=F[i][1]});document.getElementById('pv').innerHTML=s+' g <small>/ 60 g</small>';document.getElementById('pb').style.width=Math.min(100,s/60*100)+'%'}pr();
+var f=document.getElementById('f');f.addEventListener('submit',function(e){e.preventDefault();f.querySelector('.ok').hidden=false});
+})();
+</script>
+
+<a class="dw-home" href="./#ornekler" aria-label="Portföye geri dön"><span aria-hidden="true">←</span> Portföye dön</a>
+<style>
+.dw-home{position:fixed;z-index:9999;left:max(14px,env(safe-area-inset-left,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:99px;background:#18211c;color:#fff!important;font:600 14px/1 system-ui,-apple-system,"Segoe UI",sans-serif;text-decoration:none;box-shadow:0 10px 28px -10px rgba(0,0,0,.55),0 0 0 2px rgba(255,255,255,.9)}
+.dw-home:hover{background:#1d6a50}
+.dw-home:focus-visible{outline:3px solid #e9a727;outline-offset:3px}
+@media print{.dw-home{display:none}}
+</style>
+<script>
+(function(){
+  var target = location.protocol === 'file:' ? 'index.html#ornekler' : './#ornekler';
+  document.querySelectorAll('a.dw-home, a.dw-back').forEach(function(a){
+    a.setAttribute('href', target);
+    a.addEventListener('click', function(e){
+      try{
+        if (document.referrer && new URL(document.referrer).origin === location.origin && history.length > 1){
+          e.preventDefault(); history.back();
+        }
+      }catch(_){}
+    });
+  });
+})();
+</script>
+</body></html>

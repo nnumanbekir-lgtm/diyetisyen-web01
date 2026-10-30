@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Dyt. Deniz Arslan · Online Diyet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap">
+<style>
+/* Layout: app landing page. Hero with phone mockup chat, week-of-coaching selector, time-zone appointment converter, plan cards */
+:root{
+ --bg:#fbfaff; --surface:#ffffff; --ink:#1a1633; --muted:#615d7a; --line:#e7e3f6;
+ --violet:#5b3df5; --violet-2:#7f66ff; --lilac:#efeaff; --peach:#ffb59f; --peach-soft:#fff0ea; --mint:#2fbf9b;
+ --disp:'Outfit',system-ui,sans-serif; --body:'DM Sans',system-ui,sans-serif;
+ color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.6;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.wrap{max-width:1160px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--disp);font-weight:700;letter-spacing:-.025em;line-height:1.05;margin:0;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--violet);outline-offset:3px}
+.demo-bar{font-size:12.5px;background:var(--ink);color:#c9c4ea}
+.demo-bar .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding-block:7px}
+.demo-bar a{color:var(--peach);font-weight:700}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-block:18px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--disp);font-weight:700;font-size:1.2rem}
+.logo i{width:32px;height:32px;border-radius:10px 10px 10px 3px;background:var(--violet);display:grid;place-items:center;color:#fff;font-style:normal;font-size:14px}
+.nl{display:flex;gap:26px;align-items:center;font-size:15px;font-weight:500}
+.nl a{text-decoration:none;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;gap:8px;font:inherit;font-weight:700;padding:14px 24px;border-radius:14px;border:0;cursor:pointer;text-decoration:none;background:var(--violet);color:#fff;box-shadow:0 10px 24px -12px var(--violet)}
+.btn.l{background:var(--surface);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+.nl .btn{color:#fff;padding:10px 18px}
+
+/* hero */
+.hero{position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;width:760px;height:760px;right:-240px;top:-180px;border-radius:50%;background:radial-gradient(circle,var(--lilac) 0,transparent 68%);z-index:-1}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding-block:clamp(30px,5vw,60px) clamp(50px,7vw,90px)}
+.hero .wrap>*{min-width:0}
+.live{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;background:var(--surface);border:1px solid var(--line);padding:6px 14px 6px 10px;border-radius:99px}
+.live i{width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 4px #2fbf9b33;animation:pulse 2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 8px #2fbf9b11}}
+.hero h1{font-size:clamp(2.6rem,6vw,4.6rem);font-weight:800;margin-top:18px}
+.hero h1 span{background:linear-gradient(90deg,var(--violet),var(--violet-2) 60%,#ff8f73);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .sub{color:var(--muted);font-size:1.15rem;margin-top:18px;max-width:50ch}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.how{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+.how span{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:var(--muted)}
+.how b{width:24px;height:24px;border-radius:8px;background:var(--lilac);color:var(--violet);display:grid;place-items:center;font-size:12.5px}
+
+/* phone */
+.phone{justify-self:center;width:300px;max-width:100%;aspect-ratio:300/610;background:var(--ink);border-radius:46px;padding:12px;box-shadow:0 40px 80px -40px rgba(26,22,51,.6);position:relative}
+.screen{background:#f4f2fb;border-radius:36px;height:100%;overflow:hidden;display:flex;flex-direction:column}
+.ph-top{background:var(--surface);padding:34px 16px 12px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line)}
+.ph-top .av{width:36px;height:36px;border-radius:50%;background:var(--peach);display:grid;place-items:center;font-family:var(--disp);font-weight:700;font-size:13px}
+.ph-top b{font-size:14px;display:block;line-height:1.2}
+.ph-top small{font-size:11.5px;color:var(--mint);font-weight:700}
+.notch{position:absolute;top:20px;left:50%;transform:translateX(-50%);width:90px;height:24px;background:var(--ink);border-radius:99px}
+.chat{flex:1;padding:14px 12px;display:flex;flex-direction:column;gap:8px;font-size:13.5px;line-height:1.4}
+.day{align-self:center;font-size:11px;font-weight:700;color:var(--muted);background:var(--surface);padding:2px 10px;border-radius:99px}
+.msg{max-width:82%;padding:9px 12px;border-radius:16px}
+.me{align-self:flex-end;background:var(--violet);color:#fff;border-bottom-right-radius:4px}
+.dt{align-self:flex-start;background:var(--surface);border-bottom-left-radius:4px;box-shadow:0 1px 0 var(--line)}
+.msg small{display:block;font-size:10px;opacity:.7;margin-top:3px;text-align:right}
+.photo{padding:6px;background:var(--violet)}
+.photo .img{width:170px;height:110px;border-radius:12px;background:#fff;display:grid;place-items:center}
+.photo .img svg{width:90px;height:90px}
+.typing{align-self:flex-start;background:var(--surface);border-radius:16px;padding:10px 14px;display:flex;gap:4px}
+.typing i{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:t 1.2s infinite}
+.typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
+@keyframes t{30%{transform:translateY(-4px);opacity:.5}}
+.float{position:absolute;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:10px 14px;font-size:13px;box-shadow:0 18px 40px -22px rgba(26,22,51,.45);display:flex;align-items:center;gap:10px}
+.float b{font-family:var(--disp);font-size:1.2rem}
+.f1{left:-90px;top:30%}
+.f2{right:-70px;bottom:16%}
+.float .ic{width:30px;height:30px;border-radius:10px;display:grid;place-items:center;font-weight:800;color:#fff}
+
+section{padding-block:clamp(56px,8vw,96px)}
+.sh{text-align:center;max-width:660px;margin:0 auto 36px}
+.pill{display:inline-block;font-size:13px;font-weight:700;color:var(--violet);background:var(--lilac);padding:5px 14px;border-radius:99px}
+.sh h2{font-size:clamp(2rem,4.6vw,3.2rem);margin-top:14px}
+.sh p{color:var(--muted);margin-top:12px}
+
+/* week */
+.week{background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:clamp(18px,3vw,30px);display:grid;grid-template-columns:auto 1fr;gap:30px;align-items:center}
+.week>*{min-width:0}
+.days{display:grid;grid-template-columns:repeat(7,52px);gap:8px}
+.days button{font:inherit;font-weight:700;font-size:13px;height:72px;border-radius:16px;border:1.5px solid var(--line);background:var(--bg);cursor:pointer;display:grid;place-items:center;gap:0;color:var(--ink);padding:8px 0;position:relative}
+.days button small{display:block;font-size:11px;font-weight:500;color:var(--muted)}
+.days button.has:after{content:"";position:absolute;bottom:8px;width:6px;height:6px;border-radius:50%;background:var(--peach)}
+.days button[aria-pressed=true]{background:var(--violet);border-color:var(--violet);color:#fff}
+.days button[aria-pressed=true] small{color:#d8d0ff}
+.detail{display:grid;grid-template-columns:60px 1fr;gap:18px;align-items:center}
+.detail .ic{width:60px;height:60px;border-radius:18px;background:var(--peach-soft);display:grid;place-items:center}
+.detail .ic svg{width:28px;height:28px;stroke:var(--ink)}
+.detail h3{font-size:1.5rem}
+.detail p{color:var(--muted);margin-top:4px}
+.detail .t{font-size:13px;font-weight:700;color:var(--violet);margin-top:8px}
+
+/* tz */
+.tzs{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.tzs>*{min-width:0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:clamp(20px,3vw,30px)}
+label{font-size:13.5px;font-weight:700;color:var(--muted)}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:14px;padding:12px 14px;width:100%}
+input:focus,select:focus,textarea:focus{border-color:var(--violet);outline:none}
+.fld{display:grid;gap:6px;margin-top:16px}
+.clock{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center;text-align:center}
+.clock div{background:var(--lilac);border-radius:22px;padding:22px 10px}
+.clock div:last-child{background:var(--peach-soft)}
+.clock small{display:block;font-size:13px;font-weight:700;color:var(--muted)}
+.clock b{display:block;font-family:var(--disp);font-size:clamp(2.2rem,6vw,3.2rem);font-variant-numeric:tabular-nums;line-height:1.1;margin-top:4px}
+.clock .ar{font-size:1.4rem;color:var(--muted)}
+.note{font-size:13px;color:var(--muted);margin-top:14px;text-align:center}
+.cities{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px;justify-content:center}
+.cities span{font-size:13px;font-weight:500;border:1px solid var(--line);border-radius:99px;padding:4px 12px;background:var(--surface)}
+
+/* plans */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+.plan{background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:28px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.plan.pop{background:var(--ink);color:#fff;border-color:var(--ink);position:relative}
+.plan.pop .badge{position:absolute;top:-12px;left:28px;background:var(--peach);color:var(--ink);font-size:12px;font-weight:800;padding:4px 12px;border-radius:99px}
+.plan .dur{font-size:13.5px;font-weight:700;color:var(--violet)}
+.plan.pop .dur{color:var(--peach)}
+.plan h3{font-size:1.6rem}
+.plan p{color:var(--muted);font-size:15px}
+.plan.pop p{color:#bdb8dc}
+.plan ul{list-style:none;padding:0;margin:0;display:grid;gap:9px;font-size:15px}
+.plan li{display:flex;gap:10px}
+.plan li:before{content:"";flex:none;width:20px;height:20px;border-radius:50%;background:var(--lilac) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235b3df5' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12l4 4 8-8'/%3E%3C/svg%3E") center/12px no-repeat;margin-top:2px}
+.plan .btn{margin-top:auto;justify-content:center}
+.plan.pop .btn{background:#fff;color:var(--ink);box-shadow:none}
+
+/* needs */
+.needs{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px}
+.nd{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:18px;display:grid;gap:8px;min-width:0}
+.nd svg{width:28px;height:28px;stroke:var(--violet)}
+.nd b{font-family:var(--disp);font-size:1.1rem}
+.nd span{font-size:14px;color:var(--muted)}
+
+/* about */
+.about{display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;background:linear-gradient(120deg,var(--lilac),var(--peach-soft));border-radius:32px;padding:clamp(24px,4vw,48px)}
+.about>*{min-width:0}
+.about .av{width:170px;height:170px;border-radius:50%;background:var(--surface);display:grid;place-items:center;font-family:var(--disp);font-size:3rem;font-weight:700;color:var(--violet);position:relative}
+.about .av:after{content:"Çevrimiçi";position:absolute;bottom:8px;right:-4px;background:var(--mint);color:#fff;font-family:var(--body);font-size:12px;font-weight:700;padding:4px 10px;border-radius:99px;border:3px solid var(--surface)}
+.about h2{font-size:clamp(1.8rem,4vw,2.6rem)}
+.about p{color:var(--muted);margin-top:12px;max-width:62ch}
+.stats{display:flex;gap:26px;flex-wrap:wrap;margin-top:18px}
+.stats b{display:block;font-family:var(--disp);font-size:1.6rem}
+.stats span{font-size:13.5px;color:var(--muted)}
+
+/* faq + form */
+.fc{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.fc>*{min-width:0}
+details{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px 20px}
+details+details{margin-top:10px}
+summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";width:26px;height:26px;flex:none;border-radius:8px;background:var(--lilac);color:var(--violet);display:grid;place-items:center;font-weight:800}
+details[open] summary:after{content:"−"}
+details p{color:var(--muted);margin-top:8px}
+form{display:grid;gap:12px}
+form h2{font-size:2rem}
+.r2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.r2>div{display:grid;gap:6px;min-width:0}
+.k{font-size:12.5px;color:var(--muted)}
+.ok{font-weight:700;color:var(--mint)}
+footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:24px}
+
+@media (max-width:960px){
+ .nl a:not(.btn){display:none}
+ .hero .wrap,.tzs,.fc{grid-template-columns:1fr}
+ .f1{left:-20px}.f2{right:-20px}
+ .week{grid-template-columns:1fr}
+ .plans{grid-template-columns:1fr}
+ .needs{grid-template-columns:1fr 1fr}
+}
+@media (max-width:560px){
+ .days{grid-template-columns:repeat(7,1fr);gap:5px}
+ .days button{height:62px;border-radius:12px}
+ .float{display:none}
+ .about{grid-template-columns:1fr}
+ .about .av{width:120px;height:120px;font-size:2.2rem}
+ .r2{grid-template-columns:1fr}
+ .detail{grid-template-columns:1fr}
+}
+</style></head>
+<body>
+<div class="demo-bar"><div class="wrap"><span>Demo tasarım · Kişi ve bilgiler kurgusaldır</span><a class="dw-back" href="./#ornekler">← Diyetisyen Web portföyü</a></div></div>
+<nav><div class="wrap"><a class="logo" href="#"><i>DA</i>Deniz Arslan</a>
+<div class="nl"><a href="#hafta">Nasıl çalışır</a><a href="#saat">Yurt dışı</a><a href="#paketler">Paketler</a><a class="btn" href="#basvur">Başvur</a></div></div></nav>
+
+<header class="hero"><div class="wrap">
+<div>
+<span class="live"><i></i>Bu hafta 3 yeni danışan kontenjanı</span>
+<h1>Diyetisyeniniz <span>cebinizde.</span></h1>
+<p class="sub">Görüntülü görüşme, öğün fotoğrafı takibi ve mesaj desteğiyle ilerleyen online beslenme danışmanlığı. Ankara'da, İstanbul'da ya da Berlin'de, fark etmez.</p>
+<div class="cta"><a class="btn" href="#basvur">Ücretsiz tanışma görüşmesi</a><a class="btn l" href="#hafta">Nasıl çalışır?</a></div>
+<div class="how"><span><b>1</b>Formu doldur</span><span><b>2</b>Görüntülü tanışalım</span><span><b>3</b>Planın telefonuna gelsin</span></div>
+</div>
+<div style="position:relative;justify-self:center">
+<div class="phone" aria-label="Danışan ile diyetisyen arasında örnek mesajlaşma">
+<span class="notch"></span>
+<div class="screen">
+<div class="ph-top"><span class="av">DA</span><div><b>Dyt. Deniz Arslan</b><small>çevrimiçi</small></div></div>
+<div class="chat">
+<span class="day">Bugün</span>
+<div class="msg me photo"><div class="img"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#efeaff"/><path d="M50 50 L50 12 A38 38 0 0 0 50 88Z" fill="#2fbf9b"/><path d="M50 50 L50 12 A38 38 0 0 1 88 50Z" fill="#ffb59f"/><path d="M50 50 L88 50 A38 38 0 0 1 50 88Z" fill="#e8c46a"/></svg></div></div>
+<div class="msg me">Öğle tabağım bu, bulgur fazla mı oldu? <small>12:41</small></div>
+<div class="msg dt">Tabak çok dengeli görünüyor. Bulgur bir kaşık azalabilir, yanına cacık ekleyelim. <small>12:48</small></div>
+<div class="msg me">Tamam, akşam da yürüyüş var <small>12:49</small></div>
+<div class="typing" aria-hidden="true"><i></i><i></i><i></i></div>
+</div>
+</div>
+</div>
+<div class="float f1"><span class="ic" style="background:var(--mint)">✓</span><div><b>−0,6 kg</b><br><span style="color:var(--muted)">bu hafta</span></div></div>
+<div class="float f2"><span class="ic" style="background:var(--violet)">▶</span><div><b>Perşembe 19:00</b><br><span style="color:var(--muted)">görüntülü kontrol</span></div></div>
+</div>
+</div></header>
+
+<section id="hafta" style="padding-top:0"><div class="wrap">
+<div class="sh"><span class="pill">Nasıl çalışır</span><h2>Online takipte bir hafta</h2><p>Bir güne dokunun, o gün neler olduğunu görün.</p></div>
+<div class="week">
+<div class="days" id="days"></div>
+<div class="detail"><span class="ic" id="dic"></span><div><h3 id="dh"></h3><p id="dp"></p><p class="t" id="dt"></p></div></div>
+</div>
+<div class="needs">
+<div class="nd"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg><b>Telefon</b><span>Görüşme ve mesajlar için</span></div>
+<div class="nd"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="15" rx="3"/><path d="M8 10a4 4 0 0 1 8 0"/><path d="M12 10l1.5-2"/></svg><b>Baskül</b><span>Haftada bir tartı</span></div>
+<div class="nd"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M3 15l12-12 6 6-12 12z"/><path d="M8 10l2 2M11 7l2 2M5 13l2 2"/></svg><b>Mezura</b><span>İki haftada bir bel ölçümü</span></div>
+<div class="nd"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><rect x="3" y="6" width="18" height="14" rx="3"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l2-3h4l2 3"/></svg><b>Kamera</b><span>Öğün fotoğrafları için</span></div>
+</div>
+</div></section>
+
+<section id="saat" style="background:var(--surface);border-block:1px solid var(--line)"><div class="wrap">
+<div class="sh"><span class="pill">Yurt dışındaki danışanlar</span><h2>Randevu saatiniz, kendi saatinizle</h2><p>Görüşmeler Türkiye saatiyle planlanır. Şehrinizi seçin, size göre saati görün.</p></div>
+<div class="tzs">
+<div class="card">
+<div class="fld" style="margin-top:0"><label for="tz">Yaşadığınız şehir</label><select id="tz"><option value="Europe/Istanbul">Ankara / İstanbul</option><option value="Europe/Berlin" selected>Berlin</option><option value="Europe/Amsterdam">Amsterdam</option><option value="Europe/London">Londra</option><option value="America/New_York">New York</option><option value="Asia/Dubai">Dubai</option><option value="Australia/Sydney">Sidney</option></select></div>
+<div class="fld"><label for="slot">Türkiye saatiyle görüşme</label><select id="slot"><option>09:00</option><option>12:00</option><option>15:00</option><option selected>19:00</option><option>21:00</option></select></div>
+<p class="note" style="text-align:left">Hafta sonu görüşmeleri cumartesi 10:00–14:00 arasındadır.</p>
+</div>
+<div class="card" style="background:var(--bg)">
+<div class="clock"><div><small>Türkiye</small><b id="t1">19:00</b></div><span class="ar">→</span><div><small id="cn">Berlin</small><b id="t2">17:00</b></div></div>
+<p class="note" id="dn">Bugünün tarihine göre hesaplanır; yaz saati farkları dahildir.</p>
+<div class="cities"><span>Ankara</span><span>İstanbul</span><span>İzmir</span><span>Berlin</span><span>Londra</span><span>Amsterdam</span><span>Dubai</span></div>
+</div>
+</div>
+</div></section>
+
+<section id="paketler"><div class="wrap">
+<div class="sh"><span class="pill">Paketler</span><h2>Size uygun takip temposu</h2><p>Fiyat bilgisi için başvuru formunu doldurun, size dönüş yapalım.</p></div>
+<div class="plans">
+<div class="plan"><span class="dur">4 HAFTA</span><h3>Başlangıç</h3><p>Online diyeti denemek isteyenler için.</p><ul><li>2 görüntülü görüşme</li><li>Kişisel beslenme planı</li><li>Hafta içi mesaj desteği</li></ul><a class="btn l" href="#basvur">Bilgi al</a></div>
+<div class="plan pop"><span class="badge">En çok tercih edilen</span><span class="dur">12 HAFTA</span><h3>Düzenli takip</h3><p>Kalıcı alışkanlık için tam program.</p><ul><li>6 görüntülü görüşme</li><li>Haftalık plan güncellemesi</li><li>Öğün fotoğrafı geri bildirimi</li><li>Hafta içi aynı gün mesaj dönüşü</li></ul><a class="btn" href="#basvur">Bilgi al</a></div>
+<div class="plan"><span class="dur">ESNEK</span><h3>Yurt dışı</h3><p>Bulunduğunuz ülkenin market ürünlerine göre.</p><ul><li>Saat dilimine uygun randevu</li><li>Yerel ürünlere uyarlanmış plan</li><li>Türk mutfağı alternatifleri</li></ul><a class="btn l" href="#basvur">Bilgi al</a></div>
+</div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+<div class="about"><div class="av">DA</div><div><span class="pill" style="background:var(--surface)">Hakkımda</span><h2 style="margin-top:12px">Merhaba, ben Deniz.</h2>
+<p>Danışanlarımın çoğuyla görüntülü görüşme üzerinden çalışıyorum. Beslenme ve Diyetetik lisansımın ardından online danışmanlığa odaklandım; haftalık kontrol, öğün fotoğrafı takibi ve mesaj desteğiyle yüz yüze görüşmenin düzenini ekrana taşıyorum. Klinik görüşmeler için Bilkent'teyim.</p>
+<div class="stats"><div><b>Aynı gün</b><span>mesaj dönüşü</span></div><div><b>7 ülke</b><span>danışan</span></div><div><b>Bilkent</b><span>yüz yüze seçeneği</span></div></div></div></div>
+</div></section>
+
+<section id="basvur" style="padding-top:0"><div class="wrap fc">
+<div><div class="sh" style="text-align:left;margin:0 0 22px"><span class="pill">SSS</span><h2>Sık sorulanlar</h2></div>
+<details><summary>Online diyet yüz yüze kadar etkili mi?</summary><p>Düzenli takip yapıldığında evet. Haftalık iletişim çoğu zaman klinik görüşmelerden daha sık temas sağlar.</p></details>
+<details><summary>Görüşmeler hangi uygulamadan yapılıyor?</summary><p>WhatsApp, Zoom veya Google Meet; size hangisi kolaysa.</p></details>
+<details><summary>Ölçümleri nasıl yapacağım?</summary><p>İlk görüşmede ev baskülü ve mezura ile nasıl ölçüm yapacağınızı birlikte gösteriyorum.</p></details>
+<details><summary>Mesajlara hafta sonu dönüyor musunuz?</summary><p>Hafta içi aynı gün dönüş yapıyorum. Hafta sonu mesajlarına pazartesi yanıt veriyorum.</p></details>
+</div>
+<form class="card" id="f"><h2>Tanışma görüşmesi</h2>
+<div class="r2"><div><label for="ad">Ad soyad</label><input id="ad" required></div><div><label for="tel">Telefon / WhatsApp</label><input id="tel" type="tel" required placeholder="+90 5xx xxx xx xx"></div></div>
+<div class="r2"><div><label for="sh">Yaşadığınız şehir</label><input id="sh" placeholder="Örn. Berlin"></div><div><label for="uy">Tercih ettiğiniz uygulama</label><select id="uy"><option>WhatsApp</option><option>Zoom</option><option>Google Meet</option></select></div></div>
+<label for="msg">Hedefiniz</label><textarea id="msg" rows="3"></textarea>
+<p class="k">Bilgileriniz yalnızca randevu için kullanılır. KVKK aydınlatma metni bu alana eklenir.</p>
+<button class="btn" type="submit" style="justify-self:start">Başvur</button><p class="ok" hidden>Bu bir demo. Gerçek sitede talebiniz diyetisyene iletilir.</p>
+</form>
+</div></section>
+
+<footer><div class="wrap"><span>© 2026 Dyt. Deniz Arslan · Bu sitedeki bilgiler tanı ve tedavi yerine geçmez.</span><span>Tasarım: Diyetisyen Web</span></div></footer>
+<script>
+(function(){
+var I={v:'<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><rect x="3" y="6" width="13" height="12" rx="3"/><path d="M16 10l5-3v10l-5-3"/></svg>',m:'<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 5h16v11H9l-5 4z"/></svg>',c:'<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><rect x="3" y="6" width="18" height="14" rx="3"/><circle cx="12" cy="13" r="3.5"/></svg>',s:'<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="15" rx="3"/><path d="M8 10a4 4 0 0 1 8 0"/></svg>',r:'<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M9 12l2 2 4-4"/></svg>'};
+var D=[['Pzt','Planlı başlangıç',I.m,'Haftanın menüsü ve alışveriş listesi telefonunuza gelir.','Sabah 09:00'],
+['Sal','Öğün fotoğrafı',I.c,'Öğle ve akşam tabağınızın fotoğrafını gönderirsiniz, kısa geri bildirim alırsınız.','Gün boyu'],
+['Çar','Mesaj desteği',I.m,'Takıldığınız her soru için yazabilirsiniz; hafta içi aynı gün dönüş.','Gün boyu'],
+['Per','Görüntülü kontrol',I.v,'20 dakikalık görüşmede haftayı değerlendirir, planı güncelleriz.','19:00 · 20 dk'],
+['Cum','Hafta sonu hazırlığı',I.r,'Davet ve dışarıda yemek için hafta sonu önerileri.','Öğleden sonra'],
+['Cmt','Serbest gün',I.m,'Plan esnek; isterseniz mesajla hafta sonu sorularınızı iletebilirsiniz.','—'],
+['Paz','Tartı günü',I.s,'Sabah aç karnına tartı ve bel ölçümünüzü gönderirsiniz.','Sabah']];
+var box=document.getElementById('days');
+D.forEach(function(d,i){var b=document.createElement('button');b.type='button';b.textContent=d[0];if(i!==5)b.className='has';b.onclick=function(){sel(i)};box.appendChild(b)});
+function sel(i){var d=D[i];document.getElementById('dic').innerHTML=d[2];document.getElementById('dh').textContent=d[1];document.getElementById('dp').textContent=d[3];document.getElementById('dt').textContent=d[4];
+box.querySelectorAll('button').forEach(function(b,j){b.setAttribute('aria-pressed',j===i)})}
+sel(3);
+// tz
+var tz=document.getElementById('tz'),slot=document.getElementById('slot');
+function off(zone,date){var s=date.toLocaleString('en-US',{timeZone:zone,hour12:false,year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'});var m=s.match(/(\d+)\/(\d+)\/(\d+),\s(\d+):(\d+)/);var h=+m[4]%24;return Date.UTC(+m[3],+m[1]-1,+m[2],h,+m[5])-date.getTime()}
+function conv(){try{var now=new Date();var p=slot.value.split(':');var trOff=off('Europe/Istanbul',now),loc=off(tz.value,now);var mins=(+p[0])*60+(+p[1])+Math.round((loc-trOff)/60000);var dd='';if(mins<0){mins+=1440;dd=' (önceki gün)'}else if(mins>=1440){mins-=1440;dd=' (ertesi gün)'}
+var hh=String(Math.floor(mins/60)).padStart(2,'0'),mm=String(mins%60).padStart(2,'0');document.getElementById('t1').textContent=slot.value;document.getElementById('t2').textContent=hh+':'+mm;document.getElementById('cn').textContent=tz.options[tz.selectedIndex].text+dd}catch(e){}}
+tz.onchange=slot.onchange=conv;conv();
+var f=document.getElementById('f');f.addEventListener('submit',function(e){e.preventDefault();f.querySelector('.ok').hidden=false});
+})();
+</script>
+
+<a class="dw-home" href="./#ornekler" aria-label="Portföye geri dön"><span aria-hidden="true">←</span> Portföye dön</a>
+<style>
+.dw-home{position:fixed;z-index:9999;left:max(14px,env(safe-area-inset-left,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:99px;background:#18211c;color:#fff!important;font:600 14px/1 system-ui,-apple-system,"Segoe UI",sans-serif;text-decoration:none;box-shadow:0 10px 28px -10px rgba(0,0,0,.55),0 0 0 2px rgba(255,255,255,.9)}
+.dw-home:hover{background:#1d6a50}
+.dw-home:focus-visible{outline:3px solid #e9a727;outline-offset:3px}
+@media print{.dw-home{display:none}}
+</style>
+<script>
+(function(){
+  var target = location.protocol === 'file:' ? 'index.html#ornekler' : './#ornekler';
+  document.querySelectorAll('a.dw-home, a.dw-back').forEach(function(a){
+    a.setAttribute('href', target);
+    a.addEventListener('click', function(e){
+      try{
+        if (document.referrer && new URL(document.referrer).origin === location.origin && history.length > 1){
+          e.preventDefault(); history.back();
+        }
+      }catch(_){}
+    });
+  });
+})();
+</script>
+</body></html>

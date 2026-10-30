@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Dyt. Elif Aydın · Sporcu Beslenmesi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Rubik:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: athletics track. Cobalt lanes hero + fuel timeline, weekly periodisation board, calculator, numbered stations */
+:root{
+ --track:#1d3fa3; --track-deep:#14307f; --lane:rgba(255,255,255,.22);
+ --paper:#f4f6fb; --ink:#0e1733; --muted:#55607d; --line:#d6dcea;
+ --signal:#ffc93c; --hot:#ff5a3c; --white:#ffffff;
+ --disp:'Big Shoulders Display',Impact,sans-serif; --body:'Rubik',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+ color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.55;padding-bottom:env(safe-area-inset-bottom,0px)}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--disp);text-transform:uppercase;line-height:.92;margin:0;letter-spacing:.01em;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--signal);outline-offset:3px}
+.mono{font-family:var(--mono)}
+
+/* demo bar + nav */
+.demo-bar{background:var(--ink);color:#c9d2ea;font-size:12.5px;padding-top:env(safe-area-inset-top,0px)}
+.demo-bar .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding-block:7px}
+.demo-bar a{color:var(--signal);font-weight:600;text-decoration:none}
+nav{background:var(--track);color:var(--white);position:sticky;top:env(safe-area-inset-top,0px);z-index:5;border-bottom:1px solid var(--lane)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-block:12px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo b{font-family:var(--disp);font-size:1.5rem;text-transform:uppercase;letter-spacing:.02em}
+.logo i{font-style:normal;font-family:var(--mono);font-size:11px;background:var(--signal);color:var(--ink);padding:2px 6px;border-radius:3px}
+.navl{display:flex;gap:22px;align-items:center;font-size:14px;font-weight:500}
+.navl a{text-decoration:none;opacity:.85}
+.navl a:hover{opacity:1}
+.pill{background:var(--signal);color:var(--ink)!important;opacity:1!important;font-weight:700;padding:9px 16px;border-radius:99px}
+
+/* hero: track lanes */
+.hero{background:var(--track);color:var(--white);position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(180deg,transparent 0 calc(25% - 2px),var(--lane) calc(25% - 2px) 25%);pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.25fr .75fr;gap:40px;padding-block:clamp(36px,6vw,72px)}
+.hero .wrap>*{min-width:0}
+.lanes{display:grid}
+.lane{display:grid;grid-template-columns:44px 1fr;align-items:center;gap:14px;padding-block:6px}
+.lane .no{font-family:var(--mono);font-size:13px;font-weight:700;border:1.5px solid rgba(255,255,255,.6);border-radius:50%;width:34px;height:34px;display:grid;place-items:center}
+.lane h1{font-size:clamp(3rem,10vw,7.4rem);font-weight:900}
+.lane:nth-child(2) h1{color:var(--signal)}
+.lead{font-size:1.12rem;max-width:48ch;margin-top:22px;color:#dbe3fb}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:inherit;font-weight:700;padding:14px 22px;border-radius:99px;border:0;cursor:pointer;text-decoration:none;background:var(--signal);color:var(--ink)}
+.btn.line{background:transparent;color:var(--white);box-shadow:inset 0 0 0 2px rgba(255,255,255,.55)}
+.btn.dark{background:var(--ink);color:var(--white)}
+
+/* fuel timeline card */
+.fuel{background:var(--white);color:var(--ink);border-radius:18px;padding:22px;align-self:center;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.fuel header{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-bottom:2px solid var(--ink);padding-bottom:10px}
+.fuel header b{font-family:var(--disp);font-size:1.5rem;text-transform:uppercase}
+.fuel header span{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.tl{list-style:none;margin:14px 0 0;padding:0;position:relative}
+.tl:before{content:"";position:absolute;left:62px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl li{display:grid;grid-template-columns:52px 1fr;gap:22px;padding-block:9px;position:relative}
+.tl li:after{content:"";position:absolute;left:57px;top:15px;width:12px;height:12px;border-radius:50%;background:var(--white);border:2.5px solid var(--track)}
+.tl li.go:after{background:var(--hot);border-color:var(--hot)}
+.tl time{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--track);padding-top:2px}
+.tl strong{display:block;font-size:15px}
+.tl small{color:var(--muted);font-size:13.5px}
+
+/* sports ticker */
+.ticker{background:var(--signal);overflow:hidden;border-block:2px solid var(--ink)}
+.ticker .row{display:flex;gap:34px;padding-block:12px;white-space:nowrap;width:max-content;animation:run 30s linear infinite}
+.ticker span{font-family:var(--disp);font-size:1.45rem;text-transform:uppercase;font-weight:900}
+.ticker span:nth-child(even){color:var(--track)}
+@keyframes run{to{transform:translateX(-50%)}}
+
+section{padding-block:clamp(56px,8vw,96px)}
+.kick{font-family:var(--mono);font-size:12.5px;font-weight:700;color:var(--hot);letter-spacing:.06em;text-transform:uppercase}
+.sh{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:30px}
+.sh h2{font-size:clamp(2.4rem,6vw,4.2rem);margin-top:8px}
+.sh p{color:var(--muted);max-width:44ch}
+
+/* periodisation board */
+.board{overflow-x:auto;background:var(--white);border:1px solid var(--line);border-radius:16px}
+.week{display:grid;grid-template-columns:repeat(7,minmax(118px,1fr));min-width:830px}
+.day{padding:16px 14px;border-right:1px solid var(--line);display:grid;gap:10px;align-content:start}
+.day:last-child{border-right:0}
+.day .d{font-family:var(--mono);font-size:12px;color:var(--muted);font-weight:700}
+.day .t{font-family:var(--disp);font-size:1.35rem;text-transform:uppercase;line-height:1}
+.bar{height:96px;background:var(--paper);border-radius:8px;display:flex;align-items:flex-end;overflow:hidden}
+.bar i{display:block;width:100%;background:var(--track);border-radius:8px 8px 0 0}
+.day.hi .bar i{background:var(--hot)}
+.day.lo .bar i{background:#9db0e6}
+.day .g{font-family:var(--mono);font-size:13px;font-weight:700}
+.day .g small{font-weight:500;color:var(--muted)}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px;font-size:13.5px;color:var(--muted)}
+.legend span:before{content:"";display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:7px;vertical-align:-1px;background:var(--c)}
+
+/* calculator */
+.calc{background:var(--ink);color:var(--white)}
+.calc .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;align-items:center}
+.calc .wrap>*{min-width:0}
+.calc h2{font-size:clamp(2.4rem,6vw,4rem);margin-top:8px}
+.calc p.note{color:#aab6d6;margin-top:16px;max-width:46ch}
+.panel{background:#18244a;border-radius:18px;padding:24px;display:grid;gap:18px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fields>div{display:grid;gap:6px;min-width:0}
+label{font-size:13px;font-weight:600;color:#aab6d6}
+input,select,textarea{font:inherit;color:inherit;background:transparent;border:1.5px solid #34467d;border-radius:10px;padding:12px 13px;width:100%}
+select option{color:var(--ink)}
+.result{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;border-top:1px solid #34467d;padding-top:18px}
+.result .n{font-family:var(--disp);font-size:clamp(4rem,10vw,6rem);font-weight:900;color:var(--signal);line-height:.85;font-variant-numeric:tabular-nums}
+.result .n small{font-size:.4em}
+.meals{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.meals div{background:#22305c;border-radius:10px;padding:10px;text-align:center;font-size:12px;color:#aab6d6}
+.meals b{display:block;font-family:var(--mono);font-size:1.05rem;color:var(--white)}
+
+/* services as stations */
+.stations{display:grid;border-top:2px solid var(--ink)}
+.st{display:grid;grid-template-columns:90px 1fr 1.2fr auto;gap:24px;align-items:center;padding-block:24px;border-bottom:1px solid var(--line)}
+.st>*{min-width:0}
+.st .k{font-family:var(--disp);font-size:3.2rem;font-weight:900;color:var(--track);line-height:1}
+.st h3{font-size:1.9rem}
+.st p{color:var(--muted)}
+.st .tag{font-family:var(--mono);font-size:12px;font-weight:700;background:var(--paper);border:1px solid var(--line);padding:5px 10px;border-radius:99px;white-space:nowrap}
+
+/* about */
+.about{background:var(--white);border-block:1px solid var(--line)}
+.about .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:center}
+.about .wrap>*{min-width:0}
+.jersey{aspect-ratio:4/5;max-width:100%;background:var(--track);border-radius:18px;position:relative;overflow:hidden;display:grid;place-items:center;color:var(--white)}
+.jersey:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 22%,var(--lane) 22% calc(22% + 2px))}
+.jersey b{font-family:var(--disp);font-size:clamp(7rem,18vw,11rem);font-weight:900;position:relative;line-height:1}
+.jersey span{position:absolute;bottom:14px;font-size:12px;opacity:.75}
+.about h2{font-size:clamp(2.2rem,5vw,3.6rem);margin-top:8px}
+.about p.b{margin-top:18px;max-width:60ch;color:var(--muted);font-size:1.05rem}
+.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+.nums div{border-left:3px solid var(--hot);padding-left:14px}
+.nums b{display:block;font-family:var(--disp);font-size:2.4rem;line-height:1}
+.nums span{font-size:13.5px;color:var(--muted)}
+
+/* faq + contact */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.two>*{min-width:0}
+details{border-bottom:1px solid var(--line);padding-block:16px}
+summary{cursor:pointer;font-weight:600;font-size:1.05rem;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";font-family:var(--mono);color:var(--hot);font-weight:700}
+details[open] summary:after{content:"−"}
+details p{color:var(--muted);margin-top:8px}
+.form{background:var(--track);color:var(--white);border-radius:18px;padding:26px;display:grid;gap:12px}
+.form h3{font-size:2rem}
+.form label{color:#dbe3fb}
+.form input,.form select,.form textarea{border-color:rgba(255,255,255,.35)}
+.form .r{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form .r>div{display:grid;gap:6px;min-width:0}
+.form .k{font-size:12px;color:#c5d0f2}
+.ok{font-weight:700;color:var(--signal)}
+.info{display:grid;gap:14px;margin-top:26px;font-size:15px}
+.info div{display:grid;grid-template-columns:110px 1fr;gap:10px}
+.info span{font-family:var(--mono);font-size:12px;color:var(--muted);text-transform:uppercase;padding-top:2px}
+footer{background:var(--ink);color:#aab6d6;font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:24px}
+
+@media (max-width:860px){
+ .hero .wrap,.calc .wrap,.about .wrap,.two{grid-template-columns:1fr}
+ .navl a:not(.pill){display:none}
+ .st{grid-template-columns:56px 1fr;gap:6px 16px}
+ .st .k{font-size:2.4rem;grid-row:span 3}
+ .st .tag{justify-self:start}
+ .jersey{max-width:320px}
+ .fields,.form .r{grid-template-columns:1fr}
+ .meals{grid-template-columns:repeat(2,1fr)}
+}
+</style></head>
+<body>
+<div class="demo-bar"><div class="wrap"><span>Demo tasarım · Kişi ve bilgiler kurgusaldır</span><a class="dw-back" href="./#ornekler">← Diyetisyen Web portföyü</a></div></div>
+<nav><div class="wrap"><a class="logo" href="#"><b>Elif Aydın</b><i>DYT · SPOR</i></a>
+<div class="navl"><a href="#hafta">Haftalık plan</a><a href="#hesap">Protein hesabı</a><a href="#hizmetler">Hizmetler</a><a href="#hakkimda">Hakkımda</a><a class="pill" href="#randevu">Randevu</a></div></div></nav>
+
+<header class="hero"><div class="wrap">
+<div>
+<div class="lanes">
+<div class="lane"><span class="no">1</span><h1>Yakıt</h1></div>
+<div class="lane"><span class="no">2</span><h1>Toparlanma</h1></div>
+<div class="lane"><span class="no">3</span><h1>Performans</h1></div>
+</div>
+<p class="lead">Çankaya'da koşucular, triatletler ve takım sporcuları için antrenman takvimine göre değişen beslenme planları. Ağır gün başka, dinlenme günü başka yenir.</p>
+<div class="cta"><a class="btn" href="#randevu">İlk görüşmeyi planla</a><a class="btn line" href="#hafta">Örnek haftayı gör</a></div>
+</div>
+<aside class="fuel" aria-label="Örnek antrenman günü beslenme zamanlaması">
+<header><b>Antrenman günü</b><span>18:00 interval</span></header>
+<ol class="tl">
+<li><time>15:00</time><div><strong>Ana öğün</strong><small>Pilav, tavuk, salata. Lifi ve yağı düşük tut.</small></div></li>
+<li><time>17:00</time><div><strong>Ara öğün</strong><small>Muz veya bir dilim ekmek ve bal</small></div></li>
+<li class="go"><time>18:00</time><div><strong>Antrenman</strong><small>60 dk üzeriyse sıvı ve karbonhidrat</small></div></li>
+<li><time>19:30</time><div><strong>Toparlanma</strong><small>Protein ve karbonhidrat birlikte: yoğurt, yulaf, meyve</small></div></li>
+</ol>
+</aside>
+</div></header>
+
+<div class="ticker" aria-hidden="true"><div class="row">
+<span>Koşu</span><span>Triatlon</span><span>Basketbol</span><span>Voleybol</span><span>Yüzme</span><span>Fitness</span><span>Bisiklet</span><span>Futbol</span>
+<span>Koşu</span><span>Triatlon</span><span>Basketbol</span><span>Voleybol</span><span>Yüzme</span><span>Fitness</span><span>Bisiklet</span><span>Futbol</span>
+</div></div>
+
+<section id="hafta"><div class="wrap">
+<div class="sh"><div><p class="kick">Periyodizasyon</p><h2>Karbonhidrat antrenmana göre değişir</h2></div>
+<p>Yarı maratona hazırlanan 60 kg bir koşucu için örnek hafta. Her sütun o günün karbonhidrat hedefini gösterir.</p></div>
+<div class="board"><div class="week">
+<div class="day"><span class="d">PZT</span><span class="t">Kolay koşu</span><div class="bar"><i style="height:50%"></i></div><span class="g">300 g <small>· 5 g/kg</small></span></div>
+<div class="day hi"><span class="d">SAL</span><span class="t">Interval</span><div class="bar"><i style="height:70%"></i></div><span class="g">420 g <small>· 7 g/kg</small></span></div>
+<div class="day lo"><span class="d">ÇAR</span><span class="t">Kuvvet</span><div class="bar"><i style="height:40%"></i></div><span class="g">240 g <small>· 4 g/kg</small></span></div>
+<div class="day"><span class="d">PER</span><span class="t">Tempo</span><div class="bar"><i style="height:60%"></i></div><span class="g">360 g <small>· 6 g/kg</small></span></div>
+<div class="day lo"><span class="d">CUM</span><span class="t">Dinlenme</span><div class="bar"><i style="height:30%"></i></div><span class="g">180 g <small>· 3 g/kg</small></span></div>
+<div class="day hi"><span class="d">CMT</span><span class="t">Uzun koşu</span><div class="bar"><i style="height:90%"></i></div><span class="g">480 g <small>· 8 g/kg</small></span></div>
+<div class="day"><span class="d">PAZ</span><span class="t">Aktif dinlenme</span><div class="bar"><i style="height:45%"></i></div><span class="g">270 g <small>· 4,5 g/kg</small></span></div>
+</div></div>
+<div class="legend"><span style="--c:var(--hot)">Yüksek yük</span><span style="--c:var(--track)">Orta yük</span><span style="--c:#9db0e6">Düşük yük</span></div>
+</div></section>
+
+<section class="calc" id="hesap"><div class="wrap">
+<div><p class="kick" style="color:var(--signal)">Hızlı hesap</p><h2>Günlük protein hedefin</h2>
+<p class="note">Düzenli antrenman yapanlarda öneriler genellikle kilo başına 1,2 ile 2,0 gram arasındadır. Hesap, gün içinde dört öğüne bölünmüş halini de gösterir. Kesin hedef görüşmede belirlenir.</p></div>
+<form class="panel" id="pro" onsubmit="return false">
+<div class="fields">
+<div><label for="pro-w">Kilo (kg)</label><input id="pro-w" type="number" min="30" max="200" value="68"></div>
+<div><label for="pro-l">Antrenman sıklığı</label><select id="pro-l"><option value="1.2">Haftada 2–3 gün</option><option value="1.6" selected>Haftada 4–5 gün</option><option value="1.8">Her gün</option><option value="2.0">Günde iki antrenman</option></select></div>
+</div>
+<div class="result"><div class="n"><span id="pro-v">109</span><small> g</small></div><div>günlük yaklaşık protein<div class="meals" style="margin-top:10px"><div><b id="m1">27 g</b>Kahvaltı</div><div><b id="m2">27 g</b>Öğle</div><div><b id="m3">27 g</b>Antrenman sonrası</div><div><b id="m4">27 g</b>Akşam</div></div></div></div>
+</form>
+</div></section>
+
+<section id="hizmetler"><div class="wrap">
+<div class="sh"><div><p class="kick">Hizmetler</p><h2>Dört istasyon</h2></div><p>Her sporcu bir istasyondan başlar, ihtiyaca göre diğerleri eklenir.</p></div>
+<div class="stations">
+<div class="st"><span class="k">01</span><h3>Performans planı</h3><p>Antrenman ve dinlenme günleri için ayrı karbonhidrat ve protein dağılımı.</p><span class="tag">4 haftalık</span></div>
+<div class="st"><span class="k">02</span><h3>Yarış hazırlığı</h3><p>Maraton, triatlon ve turnuva öncesi karbonhidrat yükleme ve yarış günü planı.</p><span class="tag">Yarıştan 2 hafta önce</span></div>
+<div class="st"><span class="k">03</span><h3>Vücut kompozisyonu</h3><p>Kas kütlesini koruyarak yağ oranını düşürmeye yönelik takipli program.</p><span class="tag">Biyoempedans ölçümü</span></div>
+<div class="st"><span class="k">04</span><h3>Sıvı stratejisi</h3><p>Ter testine göre antrenman öncesi, sırası ve sonrası sıvı ve elektrolit planı.</p><span class="tag">Sıcak hava sezonu</span></div>
+</div></div></section>
+
+<section class="about" id="hakkimda"><div class="wrap">
+<div class="jersey"><b>EA</b><span>Fotoğraf alanı</span></div>
+<div><p class="kick">Hakkımda</p><h2>Pistte de mutfakta da plan şart</h2>
+<p class="b">Beslenme ve Diyetetik lisansımın ardından spor beslenmesi üzerine uzmanlaştım. Amatör ve lisanslı sporcularla çalışıyor, antrenörünüzle aynı takvimi takip ederek plan hazırlıyorum.</p>
+<div class="nums"><div><b>8</b><span>branşta sporcu</span></div><div><b>2 hafta</b><span>kontrol aralığı</span></div><div><b>Online</b><span>kamp dönemlerinde</span></div></div>
+</div></div></section>
+
+<section id="randevu"><div class="wrap two">
+<div><p class="kick">Sık sorulanlar</p>
+<details><summary>Sadece profesyonel sporcularla mı çalışıyorsunuz?</summary><p>Hayır. Haftada üç gün koşan biriyle de, lisanslı bir oyuncuyla da çalışıyorum. Plan antrenman yükünüze göre kurulur.</p></details>
+<details><summary>Takviye önerisi yapıyor musunuz?</summary><p>Önce beslenme düzeni oturtulur. Takviye ihtiyacı varsa, kanıt düzeyi ve sporunuzun kurallarıyla birlikte değerlendirilir.</p></details>
+<details><summary>Antrenörümle birlikte çalışabilir misiniz?</summary><p>Evet. Antrenman programınızı paylaşmanız beslenme planını daha isabetli hale getirir.</p></details>
+<details><summary>İlk görüşmeye ne getirmeliyim?</summary><p>Haftalık antrenman programınız, varsa son kan tahlilleriniz ve yarış takviminiz.</p></details>
+<div class="info"><div><span>Adres</span>Örnek Mah. Örnek Cad. No: 1, Çankaya / Ankara</div><div><span>Telefon</span>0312 000 00 00</div><div><span>Saatler</span>Hafta içi 08:00–20:00 · Cumartesi 09:00–14:00</div></div>
+</div>
+<form class="form" id="f"><h3>Randevu al</h3>
+<div class="r"><div><label for="ad">Ad soyad</label><input id="ad" required></div><div><label for="tel">Telefon</label><input id="tel" type="tel" required placeholder="05xx xxx xx xx"></div></div>
+<div class="r"><div><label for="br">Branş</label><select id="br"><option>Koşu</option><option>Triatlon</option><option>Takım sporu</option><option>Fitness</option><option>Diğer</option></select></div><div><label for="ht">Yaklaşan yarış</label><input id="ht" placeholder="Örn. Nisan yarı maraton"></div></div>
+<label for="msg">Hedefin</label><textarea id="msg" rows="3"></textarea>
+<p class="k">Bilgileriniz yalnızca randevu için kullanılır. KVKK aydınlatma metni bu alana eklenir.</p>
+<button class="btn" type="submit">Gönder</button><p class="ok" hidden>Bu bir demo. Gerçek sitede talebiniz diyetisyene iletilir.</p>
+</form>
+</div></section>
+
+<footer><div class="wrap"><span>© 2026 Dyt. Elif Aydın · Bu sitedeki bilgiler tanı ve tedavi yerine geçmez.</span><span>Tasarım: Diyetisyen Web</span></div></footer>
+<script>
+(function(){var w=document.getElementById('pro-w'),l=document.getElementById('pro-l'),v=document.getElementById('pro-v');
+function u(){var x=Math.round((+w.value)*(+l.value));if(!(x>0)){v.textContent='–';return}v.textContent=x;var m=Math.round(x/4)+' g';['m1','m2','m3','m4'].forEach(function(i){document.getElementById(i).textContent=m})}
+w.addEventListener('input',u);l.addEventListener('change',u);u();
+var f=document.getElementById('f');f.addEventListener('submit',function(e){e.preventDefault();f.querySelector('.ok').hidden=false});})();
+</script>
+
+<a class="dw-home" href="./#ornekler" aria-label="Portföye geri dön"><span aria-hidden="true">←</span> Portföye dön</a>
+<style>
+.dw-home{position:fixed;z-index:9999;left:max(14px,env(safe-area-inset-left,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:99px;background:#18211c;color:#fff!important;font:600 14px/1 system-ui,-apple-system,"Segoe UI",sans-serif;text-decoration:none;box-shadow:0 10px 28px -10px rgba(0,0,0,.55),0 0 0 2px rgba(255,255,255,.9)}
+.dw-home:hover{background:#1d6a50}
+.dw-home:focus-visible{outline:3px solid #e9a727;outline-offset:3px}
+@media print{.dw-home{display:none}}
+</style>
+<script>
+(function(){
+  var target = location.protocol === 'file:' ? 'index.html#ornekler' : './#ornekler';
+  document.querySelectorAll('a.dw-home, a.dw-back').forEach(function(a){
+    a.setAttribute('href', target);
+    a.addEventListener('click', function(e){
+      try{
+        if (document.referrer && new URL(document.referrer).origin === location.origin && history.length > 1){
+          e.preventDefault(); history.back();
+        }
+      }catch(_){}
+    });
+  });
+})();
+</script>
+</body></html>

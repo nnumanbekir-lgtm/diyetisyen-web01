@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Dyt. Gizem Yıldız · Sezgisel Yeme</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap">
+<style>
+/* Layout: risograph zine. Two-ink print (pink + blue) on warm grey paper, hand-drawn marks, hunger scale ladder, mindset flip toggle, feelings check-in */
+:root{
+ --paper:#f1eee8; --sheet:#faf8f4; --ink:#1f2340; --muted:#5d5f74; --line:#d9d4ca;
+ --pink:#ff4f93; --pink-soft:#ffd9e8; --blue:#2f55c9; --blue-soft:#dbe3fb; --yellow:#ffd54d;
+ --disp:'Bricolage Grotesque',system-ui,sans-serif; --body:'Figtree',system-ui,sans-serif; --hand:'Caveat',cursive;
+ color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+ background-image:radial-gradient(rgba(31,35,64,.06) 1px,transparent 1.2px);background-size:5px 5px}
+.wrap{max-width:1140px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--disp);font-weight:800;letter-spacing:-.03em;line-height:.98;margin:0;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+.hand{font-family:var(--hand);font-weight:700}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.demo-bar{font-size:12.5px;background:var(--ink);color:#d1d3e6}
+.demo-bar .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding-block:7px}
+.demo-bar a{color:var(--yellow);font-weight:600}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-block:18px}
+.logo{text-decoration:none;font-family:var(--disp);font-weight:800;font-size:1.45rem;letter-spacing:-.03em;display:flex;align-items:baseline;gap:8px}
+.logo span{font-family:var(--hand);font-weight:700;font-size:1.3rem;color:var(--pink);letter-spacing:0;transform:rotate(-4deg);display:inline-block}
+.nl{display:flex;gap:22px;align-items:center;font-weight:600;font-size:15px}
+.nl a{text-decoration:none}
+.btn{display:inline-flex;align-items:center;gap:8px;font:inherit;font-weight:700;padding:14px 24px;border-radius:99px;border:2px solid var(--ink);cursor:pointer;text-decoration:none;background:var(--pink);color:#fff}
+.btn.b{background:var(--blue)}
+.btn.w{background:transparent;color:var(--ink)}
+.nl .btn{padding:9px 18px;color:#fff}
+
+/* hero */
+.hero .wrap{display:grid;grid-template-columns:1.25fr .75fr;gap:30px;align-items:center;padding-block:clamp(36px,6vw,80px)}
+.hero .wrap>*{min-width:0}
+.hero h1{font-size:clamp(3.2rem,9.5vw,7.6rem)}
+.hero h1 .p{color:var(--pink)}
+.circ{position:relative;display:inline-block;color:var(--blue)}
+.circ svg{position:absolute;left:-6%;top:-12%;width:112%;height:128%;pointer-events:none;overflow:visible}
+.hero .sub{font-size:1.15rem;color:var(--muted);margin-top:26px;max-width:46ch}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.blob{position:relative;aspect-ratio:1;max-width:380px;width:100%;justify-self:center}
+.blob .a{position:absolute;inset:6% 10% 12% 4%;border-radius:58% 42% 50% 50%/48% 56% 44% 52%;background:var(--pink);mix-blend-mode:multiply;opacity:.9}
+.blob .b{position:absolute;inset:16% 2% 2% 18%;border-radius:46% 54% 42% 58%/56% 44% 56% 44%;background:var(--blue);mix-blend-mode:multiply;opacity:.75}
+.blob .c{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:#fff;font-family:var(--hand);font-size:clamp(1.9rem,4vw,2.4rem);line-height:1;padding:20%;transform:rotate(-6deg)}
+.note{position:absolute;bottom:-4%;left:-4%;background:var(--yellow);color:var(--ink);padding:12px 16px 14px;font-family:var(--hand);font-size:1.45rem;line-height:1.05;transform:rotate(-5deg);box-shadow:3px 4px 0 rgba(31,35,64,.2);max-width:190px}
+.note:before{content:"";position:absolute;top:-10px;left:40%;width:60px;height:20px;background:rgba(255,255,255,.6);transform:rotate(4deg)}
+
+/* tape strip */
+.strip{background:var(--blue);color:#fff;transform:rotate(-1.2deg);margin-inline:-20px;border-block:2px solid var(--ink)}
+.strip .in{display:flex;gap:30px;justify-content:center;flex-wrap:wrap;padding-block:14px;font-family:var(--disp);font-weight:700;font-size:clamp(1.05rem,2.4vw,1.45rem)}
+.strip .in span:nth-child(even){font-family:var(--hand);color:var(--yellow);font-size:1.3em;line-height:.8}
+
+section{padding-block:clamp(60px,9vw,104px)}
+.sh{max-width:720px;margin-bottom:36px}
+.sh .tag{font-family:var(--hand);font-size:1.6rem;color:var(--pink);display:inline-block;transform:rotate(-3deg)}
+.sh h2{font-size:clamp(2.4rem,6vw,4.4rem);margin-top:4px}
+.sh p{color:var(--muted);margin-top:14px;font-size:1.08rem}
+
+/* hunger ladder */
+.hs{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:start}
+.hs>*{min-width:0}
+.ladder{display:grid;gap:6px}
+.rung{display:grid;grid-template-columns:52px 1fr;gap:12px;align-items:center;font:inherit;text-align:left;border:2px solid var(--ink);border-radius:14px;background:var(--sheet);padding:8px 14px 8px 8px;cursor:pointer;color:var(--ink);transition:transform .15s}
+.rung:hover{transform:translateX(4px)}
+.rung b{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;font-family:var(--disp);font-size:1.3rem;background:var(--c);color:#fff}
+.rung span{font-weight:600;font-size:15.5px}
+.rung.zone{background:#fff}
+.rung[aria-pressed=true]{background:var(--ink);color:#fff;transform:translateX(10px)}
+.zonebar{display:flex;align-items:center;gap:10px;font-family:var(--hand);font-size:1.5rem;color:var(--blue);margin:2px 0}
+.zonebar i{flex:1;height:2px;background:repeating-linear-gradient(90deg,var(--blue) 0 8px,transparent 8px 14px)}
+.read{position:sticky;top:20px;background:var(--sheet);border:2px solid var(--ink);border-radius:24px;padding:28px;box-shadow:8px 8px 0 var(--pink)}
+.read .n{font-family:var(--disp);font-size:6rem;line-height:.85;color:var(--pink);font-weight:800}
+.read h3{font-size:2rem;margin-top:10px}
+.read p{color:var(--muted);margin-top:12px}
+.read .q{font-family:var(--hand);font-size:1.6rem;color:var(--blue);margin-top:18px;line-height:1.1}
+
+/* flip */
+.flip{background:var(--sheet);border-block:2px solid var(--ink)}
+.switch{display:inline-flex;align-items:center;gap:14px;font-weight:700;margin-bottom:26px;flex-wrap:wrap}
+.switch button{width:76px;height:40px;border-radius:99px;border:2px solid var(--ink);background:var(--pink-soft);position:relative;cursor:pointer;padding:0}
+.switch button:after{content:"";position:absolute;top:4px;left:4px;width:28px;height:28px;border-radius:50%;background:var(--pink);transition:left .25s}
+.switch button[aria-pressed=true]{background:var(--blue-soft)}
+.switch button[aria-pressed=true]:after{left:40px;background:var(--blue)}
+.pairs{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.pair{border:2px solid var(--ink);border-radius:20px;padding:22px 24px;min-height:120px;display:grid;gap:8px;align-content:start;min-width:0;background:var(--pink-soft);transition:background .3s}
+.pair small{font-family:var(--hand);font-size:1.3rem;color:var(--pink)}
+.pair p{font-family:var(--disp);font-weight:700;font-size:1.35rem;line-height:1.2;letter-spacing:-.01em}
+.on .pair{background:var(--blue-soft)}
+.on .pair small{color:var(--blue)}
+
+/* feelings */
+.feel{display:grid;grid-template-columns:.9fr 1.1fr;gap:30px;align-items:center}
+.feel>*{min-width:0}
+.fchips{display:flex;flex-wrap:wrap;gap:10px}
+.fchips button{font:inherit;font-weight:700;font-size:15.5px;padding:12px 18px;border-radius:99px;border:2px solid var(--ink);background:var(--sheet);cursor:pointer;color:var(--ink)}
+.fchips button:nth-child(3n+1){transform:rotate(-2deg)}.fchips button:nth-child(3n+2){transform:rotate(1.5deg)}
+.fchips button[aria-pressed=true]{background:var(--yellow)}
+.card{background:var(--sheet);border:2px solid var(--ink);border-radius:24px;padding:28px;position:relative}
+.card:before{content:"";position:absolute;top:-12px;right:30px;width:80px;height:24px;background:rgba(255,79,147,.55);transform:rotate(6deg)}
+.card .h{font-family:var(--hand);font-size:1.5rem;color:var(--pink)}
+.card h3{font-size:1.9rem;margin-top:4px}
+.card p{color:var(--muted);margin-top:10px}
+.card ul{margin:14px 0 0;padding-left:20px;display:grid;gap:6px}
+
+/* principles */
+.pr{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(5,1fr);gap:14px;counter-reset:p}
+.pr li{counter-increment:p;background:var(--sheet);border:2px solid var(--ink);border-radius:18px;padding:16px;display:grid;gap:6px;align-content:start;min-width:0}
+.pr li:before{content:counter(p);font-family:var(--hand);font-size:2.4rem;line-height:.8;color:var(--c,var(--pink))}
+.pr li:nth-child(even){--c:var(--blue)}
+.pr b{font-family:var(--disp);font-size:1.05rem;line-height:1.15}
+.pr span{font-size:13.5px;color:var(--muted)}
+
+/* services */
+.svc{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.sv{border-top:6px solid var(--c);background:var(--sheet);border-radius:4px;padding:20px;min-width:0}
+.sv h3{font-size:1.4rem}
+.sv p{color:var(--muted);font-size:15px;margin-top:8px}
+.sv .w{font-family:var(--hand);font-size:1.3rem;color:var(--c);margin-top:10px}
+
+/* about */
+.about .wrap{display:grid;grid-template-columns:.7fr 1.3fr;gap:44px;align-items:center}
+.about .wrap>*{min-width:0}
+.ph{aspect-ratio:4/5;background:var(--blue);border:2px solid var(--ink);border-radius:200px 200px 20px 20px;display:grid;place-items:center;color:#fff;font-family:var(--disp);font-size:4rem;font-weight:800;position:relative;max-width:320px;width:100%;justify-self:center;background-image:radial-gradient(rgba(255,255,255,.18) 1.4px,transparent 1.6px);background-size:7px 7px}
+.ph span{position:absolute;bottom:14px;font-family:var(--body);font-size:12px;font-weight:500;opacity:.8}
+.letter{font-family:var(--hand);font-size:clamp(1.6rem,3.2vw,2.1rem);line-height:1.2;color:var(--ink)}
+.letter .u{background:linear-gradient(transparent 60%,var(--yellow) 60%)}
+.about p.b{color:var(--muted);margin-top:18px;max-width:58ch}
+
+/* faq + form */
+.fc{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:start}
+.fc>*{min-width:0}
+details{border-bottom:2px dashed var(--line);padding-block:16px}
+summary{cursor:pointer;font-family:var(--disp);font-weight:700;font-size:1.2rem;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";font-family:var(--hand);font-size:1.8rem;color:var(--pink);line-height:.7}
+details[open] summary:after{content:"–"}
+details p{color:var(--muted);margin-top:8px}
+form{background:var(--pink);border:2px solid var(--ink);border-radius:26px;padding:clamp(22px,3.5vw,32px);display:grid;gap:12px;color:#fff;box-shadow:8px 8px 0 var(--blue)}
+form h2{font-size:2.6rem}
+form label{font-weight:700;font-size:14px}
+.r2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.r2>div{display:grid;gap:6px;min-width:0}
+input,select,textarea{font:inherit;color:var(--ink);background:#fff;border:2px solid var(--ink);border-radius:14px;padding:11px 13px;width:100%}
+.k{font-size:12.5px;opacity:.9}
+.ok{font-family:var(--hand);font-size:1.6rem}
+form .btn{background:var(--yellow);color:var(--ink)}
+.info{display:grid;gap:10px;margin-top:22px;font-size:15px}
+.info span{display:block;font-family:var(--hand);font-size:1.3rem;color:var(--blue);line-height:1}
+footer{border-top:2px solid var(--ink);font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:22px}
+
+@media (max-width:960px){
+ .nl a:not(.btn){display:none}
+ .hero .wrap,.hs,.feel,.about .wrap,.fc{grid-template-columns:1fr}
+ .read{position:static}
+ .pr{grid-template-columns:repeat(2,1fr)}
+ .svc{grid-template-columns:1fr 1fr}
+ .blob{max-width:300px}
+}
+@media (max-width:560px){
+ .pairs,.svc,.r2{grid-template-columns:1fr}
+ .note{font-size:1.2rem;left:0}
+}
+</style></head>
+<body>
+<div class="demo-bar"><div class="wrap"><span>Demo tasarım · Kişi ve bilgiler kurgusaldır</span><a class="dw-back" href="./#ornekler">← Diyetisyen Web portföyü</a></div></div>
+<nav><div class="wrap"><a class="logo" href="#">Gizem Yıldız <span>diyetisyen</span></a>
+<div class="nl"><a href="#skala">Açlık skalası</a><a href="#zihin">Diyet zihniyeti</a><a href="#his">Duygusal yeme</a><a class="btn" href="#randevu">Randevu</a></div></div></nav>
+
+<header class="hero"><div class="wrap">
+<div>
+<h1>Diyetleri <span class="p">bırakın.</span><br>Bedeninizi <span class="circ">dinleyin.<svg viewBox="0 0 200 80" preserveAspectRatio="none" aria-hidden="true"><path d="M20 44 C 18 12, 120 4, 176 22 C 200 32, 192 66, 120 72 C 60 78, 6 66, 12 40 C 16 26, 50 14, 90 12" fill="none" stroke="#ff4f93" stroke-width="3.5" stroke-linecap="round"/></svg></span></h1>
+<p class="sub">Kavaklıdere'de, diyet döngüsünden yorulanlar için açlık ve tokluk sinyallerini yeniden tanımaya dayanan sezgisel yeme danışmanlığı. Kalori saymadan, yasak listesi olmadan.</p>
+<div class="cta"><a class="btn" href="#randevu">Tanışalım</a><a class="btn w" href="#skala">Kendinizi deneyin</a></div>
+</div>
+<div class="blob" aria-hidden="true"><span class="a"></span><span class="b"></span><span class="c">yemekle barışmak mümkün</span><span class="note">Bu hafta hiç "yarın başlarım" demedim!</span></div>
+</div></header>
+
+<div class="strip" aria-hidden="true"><div class="in"><span>Kalori saymak yok</span><span>✕</span><span>Yasak liste yok</span><span>✕</span><span>Suçluluk yok</span><span>✕</span><span>Telafi yok</span></div></div>
+
+<section id="skala"><div class="wrap">
+<div class="sh"><span class="tag">kendinizi deneyin</span><h2>Açlık–tokluk skalası</h2><p>Şu an nerede olduğunuzu seçin. Sezgisel yemenin ilk adımı, yemeye başlamadan ve yerken bedeninize bu soruyu sormaktır.</p></div>
+<div class="hs">
+<div class="ladder" id="ladder"></div>
+<aside class="read"><span class="n" id="rn">4</span><h3 id="rt">Hafif aç</h3><p id="rp"></p><p class="q" id="rq"></p></aside>
+</div>
+</div></section>
+
+<section class="flip" id="zihin"><div class="wrap">
+<div class="sh"><span class="tag">aynı an, iki ses</span><h2>Diyet zihniyeti mi, sezgisel ses mi?</h2><p>Düğmeye dokunun; aynı durumda iç sesinizin nasıl değişebileceğini görün.</p></div>
+<div class="switch"><span>Diyet zihniyeti</span><button type="button" id="sw" aria-pressed="false" aria-label="Sezgisel sese geç"></button><span>Sezgisel ses</span></div>
+<div class="pairs" id="pairs"></div>
+</div></section>
+
+<section id="his"><div class="wrap">
+<div class="sh"><span class="tag">mutfağa gitmeden önce</span><h2>Şu an ne hissediyorsunuz?</h2><p>Duygusal yeme bir başarısızlık değil, bir ihtiyacın işaretidir. Hissinizi seçin, kendinize sorabileceğiniz soruları görün.</p></div>
+<div class="feel">
+<div class="fchips" id="fchips"></div>
+<div class="card"><span class="h" id="fh">sıkıldım</span><h3 id="ft">Canım bir şey istiyor ama ne?</h3><p id="fp"></p><ul id="fl"></ul></div>
+</div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+<div class="sh"><span class="tag">yol arkadaşları</span><h2>Sezgisel yemenin on ilkesi</h2><p>Çalışmalarımızın temeli olan yaklaşımın ilkeleri, kendi sözlerimle.</p></div>
+<ol class="pr">
+<li><b>Diyet zihniyetini bırakın</b><span>Hızlı sonuç vaatlerine veda.</span></li>
+<li><b>Açlığınıza saygı duyun</b><span>Aşırı acıkmadan yiyin.</span></li>
+<li><b>Yemekle barışın</b><span>Hiçbir yiyecek yasak değil.</span></li>
+<li><b>İç eleştirmeni susturun</b><span>"İyi" ve "kötü" etiketlerini bırakın.</span></li>
+<li><b>Tokluğu fark edin</b><span>Öğün ortasında durup sorun.</span></li>
+<li><b>Keyfi geri getirin</b><span>Sevdiğiniz yemeğin tadını çıkarın.</span></li>
+<li><b>Duygularınıza nazik olun</b><span>Her ihtiyaç yemekle karşılanmaz.</span></li>
+<li><b>Bedeninize saygı gösterin</b><span>Karşılaştırmayı bırakın.</span></li>
+<li><b>Hareketi hissedin</b><span>Ceza değil, iyi gelen hareket.</span></li>
+<li><b>Sağlığı nazikçe gözetin</b><span>Mükemmel değil, dengeli beslenme.</span></li>
+</ol>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+<div class="sh"><span class="tag">birlikte çalışmak</span><h2>Hizmetler</h2></div>
+<div class="svc">
+<div class="sv" style="--c:var(--pink)"><h3>Sezgisel yeme programı</h3><p>On ilke üzerine kurulu, birebir görüşmelerle ilerleyen süreç.</p><p class="w">12 görüşme</p></div>
+<div class="sv" style="--c:var(--blue)"><h3>Duygusal yeme</h3><p>Stres ve duygu kaynaklı yeme ataklarını fark etme çalışmaları.</p><p class="w">birebir</p></div>
+<div class="sv" style="--c:#e0a800"><h3>Farkındalıklı öğün</h3><p>Yavaş yeme ve tokluk sinyallerini tanıma egzersizleri.</p><p class="w">4 hafta</p></div>
+<div class="sv" style="--c:var(--pink)"><h3>Grup buluşmaları</h3><p>Aylık küçük grup atölyeleri ve mutfak sohbetleri.</p><p class="w">ayda bir</p></div>
+</div>
+</div></section>
+
+<section class="about" style="padding-top:0"><div class="wrap">
+<div class="ph">GY<span>Fotoğraf alanı</span></div>
+<div><span class="hand" style="font-size:1.6rem;color:var(--pink)">merhaba,</span>
+<p class="letter">Ben Gizem. Yıllarca diyet yapıp bırakmaktan yorulanlarla çalışıyorum. Amacım size yeni bir diyet vermek değil, <span class="u">yemekle yeniden barışmanızı</span> sağlamak.</p>
+<p class="b">Beslenme ve Diyetetik lisansımın ardından sezgisel yeme ve farkındalıklı beslenme üzerine eğitimler aldım. Görüşmelerimizde kalori saymak yerine açlık-tokluk farkındalığı, duygusal yeme ve beden algısı üzerine çalışıyoruz. Gerektiğinde bir psikologla birlikte ilerlemeyi de öneriyorum.</p>
+</div>
+</div></section>
+
+<section id="randevu" style="padding-top:0"><div class="wrap fc">
+<div><div class="sh" style="margin-bottom:12px"><span class="tag">sorular</span><h2>Merak edilenler</h2></div>
+<details><summary>Sezgisel yemeyle kilo verir miyim?</summary><p>Odak noktamız kilo değil, yemekle ilişkiniz. Bazı danışanlarda kilo değişir, bazılarında sabit kalır; hedefimiz sürdürülebilir bir düzen.</p></details>
+<details><summary>Her istediğimi yiyecek miyim yani?</summary><p>Hiçbir yiyecek yasak değil, ama bedeninizin neye ihtiyaç duyduğunu dinlemeyi öğreniyoruz. Bu çoğu zaman beklediğinizden daha dengeli bir sofraya dönüşür.</p></details>
+<details><summary>Sağlık sorunum var, yine uygun mu?</summary><p>Diyabet gibi durumlarda sezgisel yaklaşım, tıbbi beslenme önerileriyle birlikte uyarlanır.</p></details>
+<div class="info"><div><span>adres</span>Örnek Mah. Örnek Sok. No: 1, Kavaklıdere, Çankaya / Ankara</div><div><span>telefon</span>0312 000 00 00</div><div><span>saatler</span>Hafta içi 11:00–19:00 · Cumartesi 10:00–15:00</div></div>
+</div>
+<form id="f"><h2>Tanışalım</h2>
+<div class="r2"><div><label for="ad">Adınız</label><input id="ad" required></div><div><label for="tel">Telefon</label><input id="tel" type="tel" required placeholder="05xx xxx xx xx"></div></div>
+<label for="ny">Sizi buraya ne getirdi?</label><select id="ny"><option>Diyet döngüsünden yoruldum</option><option>Duygusal yeme</option><option>Yemekle ilişkimi düzeltmek istiyorum</option><option>Grup buluşmalarına katılmak istiyorum</option></select>
+<label for="msg">İsterseniz biraz anlatın</label><textarea id="msg" rows="3"></textarea>
+<p class="k">Bilgileriniz yalnızca randevu için kullanılır. KVKK aydınlatma metni bu alana eklenir.</p>
+<button class="btn" type="submit" style="justify-self:start">Gönder</button><p class="ok" hidden>Bu bir demo. Gerçek sitede mesajınız diyetisyene iletilir.</p>
+</form>
+</div></section>
+
+<footer><div class="wrap"><span>© 2026 Dyt. Gizem Yıldız · Bu sitedeki bilgiler tanı ve tedavi yerine geçmez.</span><span>Tasarım: Diyetisyen Web</span></div></footer>
+<script>
+(function(){
+var C=['#1f2340','#3a3f86','#2f55c9','#5b7be0','#8a96b8','#ff8ab6','#ff4f93','#e33a7d','#c22a66','#8f1d4b'];
+var L=[['Bayılacak kadar aç','Baş dönmesi ve titreme olabilir.','Bu noktaya gelmeden yemek, sonrasında aşırı yemeyi önler.','Son öğünüm ne zamandı?'],
+['Çok aç, sinirli','Odaklanmak zorlaşır, her şey yenilebilir görünür.','Hemen bir şey yiyin; ideal olarak bir sonraki sefere daha erken.','Neden bu kadar beklemişim?'],
+['Aç, yemek düşünüyorum','Mide guruldar, aklınız yemekte.','Yemeye başlamak için güzel bir an.','Gerçekten ne yemek istiyorum?'],
+['Hafif aç','Bir şeyler yiyebilirim hissi.','Öğüne başlamak ya da hafif bir ara öğün için uygun.','Şu an tabağıma ne koysam iyi gelir?'],
+['Ne aç ne tok','Nötr, rahat bir an.','Yemek için acele yok; isterseniz biraz bekleyin.','Canım mı istiyor, midem mi?'],
+['Hafif tok, rahat','Doymaya başladınız ama biraz daha yiyebilirsiniz.','Öğünün ortasında durup sormak için iyi bir an.','Birkaç lokma daha mı, yoksa yeterli mi?'],
+['Tok','Memnun ve rahat.','Çoğu kişi için öğünü bitirmek için ideal nokta.','Kendimi enerjik hissediyor muyum?'],
+['Fazla tok','Biraz ağırlık hissi.','Sorun değil, kendinizi suçlamadan devam edin.','Bu öğünde hızlı mı yedim?'],
+['Rahatsız edici tokluk','Kemeri gevşetme isteği.','Bir sonraki öğünde daha yavaş yemeyi deneyin.','Yerken dikkatim neredeydi?'],
+['Ağrı veren tokluk','Mide ağrısı, uyku hali.','Kendinize nazik olun; telafiye gerek yok, bir sonraki öğün normal devam.','Bu öğünden önce çok mu acıkmıştım?']];
+var lad=document.getElementById('ladder');
+function bar(t){var z=document.createElement('div');z.className='zonebar';z.innerHTML='<i></i><span>'+t+'</span><i></i>';lad.appendChild(z)}
+for(var i=9;i>=0;i--){(function(i){if(i===6)bar('rahat bölge ↓');
+var b=document.createElement('button');b.type='button';b.className='rung'+(i>=2&&i<=6?' zone':'');b.style.setProperty('--c',C[i]);b.innerHTML='<b>'+(i+1)+'</b><span>'+L[i][0]+'</span>';b.onclick=function(){sel(i)};lad.appendChild(b);
+if(i===2)bar('↑ rahat bölge');})(i)}
+function sel(i){document.getElementById('rn').textContent=i+1;document.getElementById('rt').textContent=L[i][0];document.getElementById('rp').textContent=L[i][1]+' '+L[i][2];document.getElementById('rq').textContent='"'+L[i][3]+'"';
+lad.querySelectorAll('.rung').forEach(function(r){r.setAttribute('aria-pressed',r.querySelector('b').textContent==String(i+1))})}
+sel(3);
+var P=[['Gece tatlı yedim','Yarın telafi etmeliyim, kahvaltıyı atlarım.','Canım tatlı istedi, tadını çıkardım. Yarın normal düzenime devam.'],
+['Davete gidiyorum','Orada bir şey yememek için önceden aç kalayım.','Aç gitmeyeyim; orada da sevdiklerimden yiyebilirim.'],
+['Tartı yükselmiş','Bu hafta her şeyi kesiyorum.','Tartı tek bir veri. Bu hafta nasıl hissettim?'],
+['Ekmek yedim','Bugün zaten bozuldu, devam edeyim.','Bozulan bir şey yok. Tok musun, ona bakalım.']];
+var pairs=document.getElementById('pairs'),sw=document.getElementById('sw');
+function draw(on){pairs.innerHTML=P.map(function(p){return'<div class="pair"><small>'+p[0]+'</small><p>'+(on?p[2]:p[1])+'</p></div>'}).join('');pairs.classList.toggle('on',on);sw.setAttribute('aria-pressed',on);sw.setAttribute('aria-label',on?'Diyet zihniyetine dön':'Sezgisel sese geç')}
+sw.onclick=function(){draw(sw.getAttribute('aria-pressed')!=='true')};draw(false);
+var F=[['Sıkıldım','Canım bir şey istiyor ama ne?','Can sıkıntısı çoğu zaman uyarılma ihtiyacıdır.',['Beş dakikalık bir yürüyüş iyi gelir mi?','Birini aramak ister misin?','Gerçekten aç mısın, skalada kaçtasın?']],
+['Stresliyim','Bir şey yiyip sakinleşeyim.','Stres anında yemek hızlı bir rahatlama sağlar ama kısa sürer.',['Üç derin nefes almayı dener misin?','Seni ne zorluyor, bir cümleyle yazabilir misin?','Yiyeceksen oturarak, yavaşça yemek ister misin?']],
+['Yorgunum','Enerji için atıştırayım.','Yorgunluk bazen açlıkla, bazen uykusuzlukla karışır.',['Son öğünün ne zamandı?','Biraz su içip on dakika dinlenmek ister misin?','Bu akşam erken yatmak mümkün mü?']],
+['Mutluyum','Kutlamak istiyorum!','Mutlulukla yemek yemek de doğaldır; keyfini çıkarın.',['Kiminle paylaşmak istersin?','Gerçekten ne yemek istiyorsun?','Tadına odaklanabileceğin bir ortam var mı?']],
+['Yalnızım','Yemek bana eşlik etsin.','Yalnızlıkta yemek bir sıcaklık arayışı olabilir.',['Bir arkadaşına mesaj atmak ister misin?','Sevdiğin bir müzik açmak iyi gelir mi?','Yemeğini sofrada, özenle hazırlamak ister misin?']],
+['Gerçekten açım','Midem guruldiyor.','Harika, bedeniniz konuşuyor. Ona kulak verin.',['Neyi canın çekiyor, sıcak mı soğuk mu?','Seni tok tutacak bir tabak hazırlayalım mı?','Yerken yarı yolda durup kendine sor.']]];
+var fc=document.getElementById('fchips');
+F.forEach(function(f,i){var b=document.createElement('button');b.type='button';b.textContent=f[0];b.onclick=function(){fs(i)};fc.appendChild(b)});
+function fs(i){var f=F[i];document.getElementById('fh').textContent=f[0].toLocaleLowerCase('tr');document.getElementById('ft').textContent=f[1];document.getElementById('fp').textContent=f[2];document.getElementById('fl').innerHTML=f[3].map(function(x){return'<li>'+x+'</li>'}).join('');
+fc.querySelectorAll('button').forEach(function(b,j){b.setAttribute('aria-pressed',j===i)})}
+fs(0);
+var f=document.getElementById('f');f.addEventListener('submit',function(e){e.preventDefault();f.querySelector('.ok').hidden=false});
+})();
+</script>
+
+<a class="dw-home" href="./#ornekler" aria-label="Portföye geri dön"><span aria-hidden="true">←</span> Portföye dön</a>
+<style>
+.dw-home{position:fixed;z-index:9999;left:max(14px,env(safe-area-inset-left,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:99px;background:#18211c;color:#fff!important;font:600 14px/1 system-ui,-apple-system,"Segoe UI",sans-serif;text-decoration:none;box-shadow:0 10px 28px -10px rgba(0,0,0,.55),0 0 0 2px rgba(255,255,255,.9)}
+.dw-home:hover{background:#1d6a50}
+.dw-home:focus-visible{outline:3px solid #e9a727;outline-offset:3px}
+@media print{.dw-home{display:none}}
+</style>
+<script>
+(function(){
+  var target = location.protocol === 'file:' ? 'index.html#ornekler' : './#ornekler';
+  document.querySelectorAll('a.dw-home, a.dw-back').forEach(function(a){
+    a.setAttribute('href', target);
+    a.addEventListener('click', function(e){
+      try{
+        if (document.referrer && new URL(document.referrer).origin === location.origin && history.length > 1){
+          e.preventDefault(); history.back();
+        }
+      }catch(_){}
+    });
+  });
+})();
+</script>
+</body></html>

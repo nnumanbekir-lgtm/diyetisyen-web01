@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Dyt. Selin Demir · Çocuk Beslenmesi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+/* Layout: sticker-book. Wavy colour bands, rotated sticker cards, interactive plate builder, lunchbox notebook */
+:root{
+ --paper:#fffcf5; --ink:#2b2350; --muted:#625b86; --line:#ece6d8;
+ --tomato:#ff6b5b; --sun:#ffc83d; --leaf:#38bf75; --sky:#4aa8ff; --grape:#9466ff;
+ --sky-soft:#e3f1ff; --sun-soft:#fff2c9; --leaf-soft:#ddf6e8; --tomato-soft:#ffe4e0;
+ --disp:'Fredoka',system-ui,sans-serif; --body:'Nunito',system-ui,sans-serif;
+ color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.wrap{max-width:1140px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:1.08;margin:0;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px dashed var(--grape);outline-offset:3px}
+.demo-bar{background:var(--ink);color:#d9d4f5;font-size:12.5px}
+.demo-bar .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding-block:7px}
+.demo-bar a{color:var(--sun);font-weight:700}
+
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-block:18px}
+.logo{text-decoration:none;font-family:var(--disp);font-weight:700;font-size:1.6rem;letter-spacing:.01em;display:flex;align-items:center;gap:10px}
+.logo span:nth-child(1){color:var(--tomato)}.logo span:nth-child(2){color:var(--sky)}
+.logo small{font-family:var(--body);font-size:12px;font-weight:800;background:var(--sun);padding:3px 9px;border-radius:99px;color:var(--ink);transform:rotate(-4deg)}
+.nl{display:flex;gap:20px;align-items:center;font-weight:700;font-size:15px}
+.nl a{text-decoration:none}
+.btn{display:inline-flex;align-items:center;gap:8px;font:inherit;font-family:var(--disp);font-weight:600;font-size:1.05rem;padding:13px 24px;border-radius:99px;border:3px solid var(--ink);cursor:pointer;text-decoration:none;background:var(--sun);color:var(--ink);box-shadow:0 5px 0 var(--ink);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(2px);box-shadow:0 3px 0 var(--ink)}
+.btn.w{background:#fff}
+
+/* hero */
+.hero{background:var(--sky-soft);position:relative}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding-block:clamp(40px,6vw,72px) clamp(70px,9vw,110px)}
+.hero .wrap>*{min-width:0}
+.hero h1{font-size:clamp(2.6rem,6.6vw,4.8rem)}
+.hero h1 .hl{background:var(--sun);padding:0 .18em;border-radius:14px;display:inline-block;transform:rotate(-2deg)}
+.hero p.sub{font-size:1.15rem;color:var(--muted);margin-top:20px;max-width:46ch}
+.cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.stickers{position:relative;aspect-ratio:1;max-width:440px;width:100%;justify-self:center}
+.stk{position:absolute;background:#fff;border-radius:50%;display:grid;place-items:center;box-shadow:0 0 0 4px #fff,0 10px 24px -10px rgba(43,35,80,.45);animation:bob 4s ease-in-out infinite}
+.stk svg{width:62%;height:62%}
+.s1{width:46%;height:46%;left:4%;top:8%;transform:rotate(-8deg)}
+.s2{width:38%;height:38%;right:2%;top:2%;animation-delay:-1s}
+.s3{width:40%;height:40%;left:14%;bottom:2%;animation-delay:-2s}
+.s4{width:44%;height:44%;right:6%;bottom:10%;animation-delay:-3s}
+.bubble{position:absolute;left:44%;top:40%;background:var(--ink);color:#fff;font-family:var(--disp);font-weight:600;font-size:15px;padding:10px 14px;border-radius:18px 18px 18px 4px;transform:rotate(4deg);max-width:150px;line-height:1.25}
+@keyframes bob{50%{translate:0 -8px}}
+.wave{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:60px;display:block}
+
+section{padding-block:clamp(56px,8vw,96px)}
+.sh{text-align:center;max-width:680px;margin:0 auto 34px}
+.label{display:inline-block;font-family:var(--disp);font-weight:600;font-size:14px;padding:5px 14px;border-radius:99px;border:2px dashed currentColor}
+.sh h2{font-size:clamp(2rem,4.8vw,3.2rem);margin-top:12px}
+.sh p{color:var(--muted);margin-top:12px}
+
+/* age groups */
+.ages{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.age{border:3px solid var(--ink);border-radius:26px;padding:22px;display:grid;gap:10px;align-content:start;min-width:0;background:#fff;box-shadow:6px 6px 0 var(--c)}
+.age:nth-child(odd){transform:rotate(-1.2deg)}.age:nth-child(even){transform:rotate(1.2deg)}
+.age .yr{font-family:var(--disp);font-size:2.4rem;font-weight:700;line-height:1;color:var(--c)}
+.age .yr small{font-size:1rem;color:var(--ink)}
+.age h3{font-size:1.25rem}
+.age p{color:var(--muted);font-size:15px}
+
+/* plate builder */
+.builder{background:var(--leaf-soft)}
+.bgrid{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+.bgrid>*{min-width:0}
+.foods{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.food{font:inherit;font-weight:800;font-size:14px;color:var(--ink);background:#fff;border:3px solid var(--ink);border-radius:20px;padding:12px 6px;cursor:pointer;display:grid;justify-items:center;gap:6px;box-shadow:0 4px 0 var(--ink);transition:transform .12s}
+.food:active{transform:translateY(3px);box-shadow:0 1px 0 var(--ink)}
+.food i{width:30px;height:30px;border-radius:50%;background:var(--c)}
+.food small{font-size:11px;font-weight:700;color:var(--muted)}
+.board{background:#fff;border:3px solid var(--ink);border-radius:30px;padding:24px;display:grid;gap:16px;justify-items:center}
+.plate{width:min(280px,100%);height:auto}
+.meter{width:100%;display:grid;gap:8px}
+.m{display:grid;grid-template-columns:70px 1fr 26px;gap:10px;align-items:center;font-size:13.5px;font-weight:800}
+.m .tr{height:12px;background:var(--line);border-radius:99px;overflow:hidden}
+.m .tr i{display:block;height:100%;width:0;background:var(--c);border-radius:99px;transition:width .3s}
+.m b{font-family:var(--disp);text-align:right}
+.say{font-family:var(--disp);font-weight:600;font-size:1.15rem;text-align:center;background:var(--sun-soft);padding:10px 16px;border-radius:16px;width:100%}
+.reset{font:inherit;font-weight:800;font-size:14px;background:none;border:0;color:var(--muted);text-decoration:underline;cursor:pointer}
+
+/* lunchbox notebook */
+.note{background:#fff;border:3px solid var(--ink);border-radius:20px;overflow:hidden;background-image:repeating-linear-gradient(#fff 0 35px,#d9e7fb 35px 36px)}
+.days{display:grid;grid-template-columns:repeat(5,1fr)}
+.day{padding:18px 18px 22px;border-right:2px dashed #c9d6ee;min-width:0}
+.day:last-child{border-right:0}
+.day h3{font-size:1.2rem;color:var(--c);line-height:36px}
+.day ul{list-style:none;padding:0;margin:0;font-size:15px;line-height:36px}
+.tip{display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:22px;font-weight:700;color:var(--muted);text-align:center}
+
+/* services */
+.svc{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.sv{display:grid;grid-template-columns:72px 1fr;gap:18px;align-items:start;background:var(--bg);border-radius:28px;padding:24px;min-width:0}
+.sv .ic{width:72px;height:72px;border-radius:22px;background:var(--c);display:grid;place-items:center;transform:rotate(-6deg)}
+.sv .ic svg{width:36px;height:36px}
+.sv h3{font-size:1.35rem}
+.sv p{color:var(--muted);margin-top:6px;font-size:15.5px}
+
+/* about */
+.about{background:var(--tomato-soft)}
+.about .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:44px;align-items:center}
+.about .wrap>*{min-width:0}
+.polaroid{background:#fff;padding:14px 14px 50px;border-radius:6px;box-shadow:0 18px 40px -20px rgba(43,35,80,.5);transform:rotate(-4deg);max-width:340px;justify-self:center;width:100%;position:relative}
+.polaroid .ph{aspect-ratio:1;background:linear-gradient(150deg,var(--sun-soft),var(--sky-soft));display:grid;place-items:center;font-family:var(--disp);font-size:4rem;color:var(--sky)}
+.polaroid span{position:absolute;bottom:14px;left:0;right:0;text-align:center;font-family:var(--disp);font-weight:600}
+.polaroid:before{content:"";position:absolute;top:-12px;left:38%;width:90px;height:26px;background:var(--sun);opacity:.85;transform:rotate(3deg)}
+.about h2{font-size:clamp(2rem,4.4vw,3rem)}
+.about p.b{margin-top:16px;color:var(--muted);max-width:58ch}
+.about ul{list-style:none;padding:0;margin:20px 0 0;display:flex;gap:10px;flex-wrap:wrap}
+.about li{background:#fff;border:2px solid var(--ink);padding:6px 14px;border-radius:99px;font-weight:700;font-size:14px}
+
+/* faq + contact */
+.fc{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start}
+.fc>*{min-width:0}
+details{border:3px solid var(--ink);border-radius:20px;padding:14px 18px;background:#fff}
+details+details{margin-top:12px}
+summary{cursor:pointer;font-family:var(--disp);font-weight:600;font-size:1.1rem;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";width:28px;height:28px;flex:none;border-radius:50%;background:var(--sun);display:grid;place-items:center;font-weight:700}
+details[open] summary:after{content:"−"}
+details p{color:var(--muted);margin-top:8px}
+form{background:var(--sky);border:3px solid var(--ink);border-radius:30px;padding:clamp(22px,3.5vw,32px);display:grid;gap:12px;box-shadow:8px 8px 0 var(--ink)}
+form h2{font-size:2.2rem;color:#fff}
+form label{font-weight:800;font-size:14px;color:#fff}
+.r{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.r>div{display:grid;gap:6px;min-width:0}
+input,select,textarea{font:inherit;color:var(--ink);background:#fff;border:3px solid var(--ink);border-radius:16px;padding:11px 13px;width:100%}
+.kv{font-size:12.5px;color:#eaf4ff}
+.ok{font-weight:800;color:#fff;background:var(--ink);padding:10px 14px;border-radius:14px}
+.info{display:grid;gap:10px;margin-top:22px;font-weight:600}
+.info span{display:block;font-family:var(--disp);font-size:13px;color:var(--muted)}
+footer{background:var(--ink);color:#d9d4f5;font-size:13.5px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:24px}
+
+@media (max-width:900px){
+ .nl a:not(.btn){display:none}
+ .hero .wrap,.bgrid,.about .wrap,.fc{grid-template-columns:1fr}
+ .stickers{max-width:320px}
+ .ages{grid-template-columns:1fr 1fr}
+ .svc{grid-template-columns:1fr}
+ .days{grid-template-columns:1fr}
+ .day{border-right:0;border-bottom:2px dashed #c9d6ee}
+ .day:last-child{border-bottom:0}
+}
+@media (max-width:520px){
+ .ages{grid-template-columns:1fr}
+ .foods{grid-template-columns:repeat(2,1fr)}
+ .r{grid-template-columns:1fr}
+ .sv{grid-template-columns:1fr}
+}
+</style></head>
+<body>
+<div class="demo-bar"><div class="wrap"><span>Demo tasarım · Kişi ve bilgiler kurgusaldır</span><a class="dw-back" href="./#ornekler">← Diyetisyen Web portföyü</a></div></div>
+<nav><div class="wrap"><a class="logo" href="#"><span>Selin</span><span>Demir</span><small>Çocuk diyetisyeni</small></a>
+<div class="nl"><a href="#yaslar">Yaş grupları</a><a href="#tabak">Tabak oyunu</a><a href="#canta">Beslenme çantası</a><a class="btn" href="#randevu" style="padding:9px 18px;font-size:.95rem">Randevu</a></div></div></nav>
+
+<header class="hero"><div class="wrap">
+<div><h1>Sebzeyle <span class="hl">küs</span> çocuk kalmasın!</h1>
+<p class="sub">Kızılay'da seçici yeme, okul beslenmesi ve büyüme dönemi için aileyle birlikte çalışan çocuk ve ergen beslenmesi danışmanlığı.</p>
+<div class="cta"><a class="btn" href="#randevu">Aile görüşmesi planla</a><a class="btn w" href="#tabak">Tabak oyununu dene</a></div></div>
+<div class="stickers" aria-hidden="true">
+<div class="stk s1"><svg viewBox="0 0 64 64"><path d="M20 54 L44 18 a6 6 0 0 0-8-6 L14 48z" fill="#ff8a3d"/><path d="M40 14 l8-10 M44 16 l12-4 M42 12 l4-10" stroke="#38bf75" stroke-width="5" stroke-linecap="round"/><path d="M24 40l6 2M30 30l6 2" stroke="#e0661f" stroke-width="3" stroke-linecap="round"/></svg></div>
+<div class="stk s2"><svg viewBox="0 0 64 64"><circle cx="32" cy="38" r="20" fill="#ff6b5b"/><path d="M32 18c0-6 3-10 8-12" stroke="#7a4b2a" stroke-width="4" fill="none" stroke-linecap="round"/><ellipse cx="42" cy="14" rx="8" ry="4" fill="#38bf75" transform="rotate(-20 42 14)"/><circle cx="25" cy="32" r="4" fill="#fff" opacity=".55"/></svg></div>
+<div class="stk s3"><svg viewBox="0 0 64 64"><rect x="28" y="34" width="8" height="22" rx="4" fill="#2f9e5f"/><circle cx="22" cy="28" r="12" fill="#38bf75"/><circle cx="42" cy="28" r="12" fill="#38bf75"/><circle cx="32" cy="18" r="13" fill="#4fd38a"/></svg></div>
+<div class="stk s4"><svg viewBox="0 0 64 64"><ellipse cx="32" cy="36" rx="22" ry="18" fill="#fff6dc" stroke="#ffc83d" stroke-width="4"/><circle cx="32" cy="38" r="9" fill="#ffc83d"/></svg></div>
+<div class="bubble">Bugün havuçla tanıştım!</div>
+</div>
+</div>
+<svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 C 240 70 480 -10 720 30 S 1200 70 1440 30 L1440 60 L0 60Z" fill="#fffcf5"/></svg>
+</header>
+
+<section id="yaslar"><div class="wrap">
+<div class="sh"><span class="label" style="color:var(--grape)">Yaş grupları</span><h2>Her yaşın tabağı farklı</h2><p>Büyüme hızı, okul düzeni ve damak tadı yaşa göre değişir. Plan da buna göre değişir.</p></div>
+<div class="ages">
+<div class="age" style="--c:var(--tomato)"><span class="yr">1–3 <small>yaş</small></span><h3>Tanışma dönemi</h3><p>Ek gıdadan aile sofrasına geçiş, kendi kendine yeme ve yeni tatlar.</p></div>
+<div class="age" style="--c:var(--sky)"><span class="yr">4–6 <small>yaş</small></span><h3>"Yemem" dönemi</h3><p>Seçici yemeye karşı sabırlı yöntemler ve sofra düzeni.</p></div>
+<div class="age" style="--c:var(--leaf)"><span class="yr">7–12 <small>yaş</small></span><h3>Okul dönemi</h3><p>Kahvaltı alışkanlığı, beslenme çantası ve kantin seçimleri.</p></div>
+<div class="age" style="--c:var(--grape)"><span class="yr">13–18 <small>yaş</small></span><h3>Büyüme atağı</h3><p>Spor yapan gençler, sınav dönemi ve beden algısı.</p></div>
+</div></div></section>
+
+<section class="builder" id="tabak"><div class="wrap">
+<div class="sh"><span class="label" style="color:var(--leaf)">Tabak oyunu</span><h2>Çocuğunuzla birlikte bir tabak hazırlayın</h2><p>Yiyeceklere dokunun, tabağa eklensin. Dengeli bir tabakta her gruptan biraz olur.</p></div>
+<div class="bgrid">
+<div>
+<div class="foods" id="foods"></div>
+<p style="text-align:center;margin-top:14px"><button class="reset" id="reset" type="button">Tabağı boşalt</button></p>
+</div>
+<div class="board">
+<svg class="plate" viewBox="0 0 300 300" id="plate" role="img" aria-label="Hazırlanan tabak">
+<circle cx="150" cy="150" r="142" fill="#fff" stroke="#2b2350" stroke-width="6"/>
+<circle cx="150" cy="150" r="112" fill="#f6f2ea" stroke="#ece6d8" stroke-width="3"/>
+<g id="dots"></g>
+</svg>
+<div class="meter" id="meter"></div>
+<p class="say" id="say">Tabak boş. Hadi başlayalım!</p>
+</div>
+</div></div></section>
+
+<section id="canta"><div class="wrap">
+<div class="sh"><span class="label" style="color:var(--tomato)">Beslenme çantası</span><h2>Bir haftalık çanta fikirleri</h2><p>İlkokul çağındaki çocuklar için hazırlaması kolay, ezilmeyen ve bozulmayan seçenekler.</p></div>
+<div class="note"><div class="days">
+<div class="day" style="--c:var(--tomato)"><h3>Pazartesi</h3><ul><li>Peynirli tam buğday sandviç</li><li>Salatalık dilimleri</li><li>Bir mandalina</li></ul></div>
+<div class="day" style="--c:var(--sky)"><h3>Salı</h3><ul><li>Haşlanmış yumurta</li><li>Simit yarımı</li><li>Havuç çubukları</li></ul></div>
+<div class="day" style="--c:var(--leaf)"><h3>Çarşamba</h3><ul><li>Ev yapımı yulaflı kurabiye</li><li>Ayran</li><li>Elma dilimleri</li></ul></div>
+<div class="day" style="--c:var(--grape)"><h3>Perşembe</h3><ul><li>Lor peynirli dürüm</li><li>Cherry domates</li><li>Bir avuç ceviz</li></ul></div>
+<div class="day" style="--c:#e6a800"><h3>Cuma</h3><ul><li>Sebzeli mini omlet</li><li>Kuru kayısı</li><li>Su şişesi</li></ul></div>
+</div></div>
+<p class="tip">Ceviz ve fındık için okulunuzun alerji kurallarını kontrol edin.</p>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+<div class="sh"><span class="label" style="color:var(--sky)">Hizmetler</span><h2>Nasıl yardımcı olabilirim?</h2></div>
+<div class="svc">
+<div class="sv" style="--bg:var(--tomato-soft);--c:var(--tomato)"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M9 10h.01M15 10h.01M9 15c2 1.5 4 1.5 6 0"/></svg></span><div><h3>Seçici yeme</h3><p>Yeni yiyecekleri adım adım tanıtan, sofra kavgasını azaltan yöntemler.</p></div></div>
+<div class="sv" style="--bg:var(--sky-soft);--c:var(--sky)"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><rect x="4" y="7" width="16" height="12" rx="3"/><path d="M9 7V5h6v2"/></svg></span><div><h3>Okul beslenmesi</h3><p>Beslenme çantası ve kantin seçimleri için haftalık planlar.</p></div></div>
+<div class="sv" style="--bg:var(--leaf-soft);--c:var(--leaf)"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M12 20V8M7 13l5-5 5 5"/></svg></span><div><h3>Büyüme takibi</h3><p>Boy ve kilo persentillerinin izlenmesi, ergenlik dönemi planı.</p></div></div>
+<div class="sv" style="--bg:var(--sun-soft);--c:#e6a800"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><circle cx="8" cy="9" r="3"/><circle cx="16" cy="9" r="3"/><path d="M3 19c1-3 3-4 5-4s4 1 5 4M11 19c1-3 3-4 5-4s4 1 5 4"/></svg></span><div><h3>Aile atölyeleri</h3><p>Ebeveynlere yönelik grup eğitimleri ve çocuklarla mutfak etkinlikleri.</p></div></div>
+</div></div></section>
+
+<section class="about"><div class="wrap">
+<div class="polaroid"><div class="ph">SD</div><span>Fotoğraf alanı</span></div>
+<div><span class="label" style="color:var(--tomato)">Hakkımda</span><h2 style="margin-top:12px">Merhaba, ben Selin!</h2>
+<p class="b">Çocuklarla çalışırken aileyi sürecin merkezine alıyorum. Yasaklamak yerine yeni tatları oyunla tanıtıyor, evdeki ve okuldaki düzene uyan küçük adımlar öneriyorum. Görüşmelerimde çocuğunuz da oyun köşesinde bizimle birlikte oluyor.</p>
+<ul><li>Beslenme ve Diyetetik lisans</li><li>Çocuk beslenmesi sertifikası</li><li>Kızılay, Ankara</li></ul></div>
+</div></section>
+
+<section id="randevu"><div class="wrap fc">
+<div><div class="sh" style="text-align:left;margin:0 0 22px"><span class="label" style="color:var(--grape)">Sık sorulanlar</span><h2>Ailelerin merak ettikleri</h2></div>
+<details><summary>Görüşmeye çocuğumu getirmeli miyim?</summary><p>İlk görüşmeye birlikte gelmenizi öneririm. Muayene odasında çocuğunuz için oyun köşesi var.</p></details>
+<details><summary>Çocuğum sadece birkaç şey yiyor, normal mi?</summary><p>Seçici yeme pek çok çocukta görülen bir dönemdir. Büyüme takibi yapılarak ne kadar endişe gerektirdiği birlikte değerlendirilir.</p></details>
+<details><summary>Çocuğuma diyet yaptırmak istemiyorum.</summary><p>Çocuklarda amaç kısıtlama değil, büyümeyi destekleyen dengeli bir sofra düzenidir. Çalışmalarım bu yaklaşıma dayanır.</p></details>
+<div class="info"><div><span>Adres</span>Örnek Mah. Örnek Cad. No: 1, Kızılay, Çankaya / Ankara</div><div><span>Telefon</span>0312 000 00 00</div><div><span>Saatler</span>Hafta içi 10:00–19:00 · Cumartesi 10:00–16:00</div></div>
+</div>
+<form id="f"><h2>Randevu al</h2>
+<div class="r"><div><label for="ad">Veli adı soyadı</label><input id="ad" required></div><div><label for="tel">Telefon</label><input id="tel" type="tel" required placeholder="05xx xxx xx xx"></div></div>
+<div class="r"><div><label for="ya">Çocuğun yaşı</label><select id="ya"><option>1–3 yaş</option><option>4–6 yaş</option><option selected>7–12 yaş</option><option>13–18 yaş</option></select></div><div><label for="ko">Konu</label><select id="ko"><option>Seçici yeme</option><option>Okul beslenmesi</option><option>Büyüme takibi</option><option>Diğer</option></select></div></div>
+<label for="msg">Kısaca anlatır mısınız?</label><textarea id="msg" rows="3"></textarea>
+<p class="kv">Bilgileriniz yalnızca randevu için kullanılır. KVKK aydınlatma metni bu alana eklenir.</p>
+<button class="btn" type="submit" style="justify-self:start">Gönder</button><p class="ok" hidden>Bu bir demo. Gerçek sitede talebiniz diyetisyene iletilir.</p>
+</form>
+</div></section>
+
+<footer><div class="wrap"><span>© 2026 Dyt. Selin Demir · Bu sitedeki bilgiler tanı ve tedavi yerine geçmez.</span><span>Tasarım: Diyetisyen Web</span></div></footer>
+<script>
+(function(){
+var G={sebze:{c:'#38bf75',n:'Sebze',t:2},meyve:{c:'#ff6b5b',n:'Meyve',t:1},protein:{c:'#9466ff',n:'Protein',t:1},tahil:{c:'#ffc83d',n:'Tahıl',t:1},sut:{c:'#4aa8ff',n:'Süt',t:1}};
+var FOODS=[['Brokoli','sebze'],['Havuç','sebze'],['Domates','sebze'],['Elma','meyve'],['Köfte','protein'],['Yumurta','protein'],['Bulgur','tahil'],['Yoğurt','sut']];
+var box=document.getElementById('foods'),dots=document.getElementById('dots'),meter=document.getElementById('meter'),say=document.getElementById('say');
+var picks=[];
+FOODS.forEach(function(f){var b=document.createElement('button');b.type='button';b.className='food';b.innerHTML='<i style="--c:'+G[f[1]].c+'"></i>'+f[0]+'<small>'+G[f[1]].n+'</small>';b.onclick=function(){if(picks.length>=8){say.textContent='Tabak doldu! Biraz yer açalım.';return}picks.push(f);draw()};box.appendChild(b)});
+Object.keys(G).forEach(function(k){var d=document.createElement('div');d.className='m';d.innerHTML='<span>'+G[k].n+'</span><span class="tr"><i id="m-'+k+'" style="--c:'+G[k].c+'"></i></span><b id="c-'+k+'">0</b>';meter.appendChild(d)});
+function draw(){
+ dots.innerHTML='';var cnt={};Object.keys(G).forEach(function(k){cnt[k]=0});
+ picks.forEach(function(p,i){cnt[p[1]]++;var a=i/8*Math.PI*2-Math.PI/2,r=i%2?62:72;var x=150+Math.cos(a)*r,y=150+Math.sin(a)*r;
+  var c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('cx',x);c.setAttribute('cy',y);c.setAttribute('r',26);c.setAttribute('fill',G[p[1]].c);c.setAttribute('stroke','#2b2350');c.setAttribute('stroke-width','3');dots.appendChild(c);
+  var t=document.createElementNS('http://www.w3.org/2000/svg','text');t.setAttribute('x',x);t.setAttribute('y',y+4);t.setAttribute('text-anchor','middle');t.setAttribute('font-size','10');t.setAttribute('font-weight','800');t.setAttribute('font-family','Nunito,sans-serif');t.setAttribute('fill','#fff');t.textContent=p[0];dots.appendChild(t)});
+ Object.keys(G).forEach(function(k){document.getElementById('c-'+k).textContent=cnt[k];document.getElementById('m-'+k).style.width=Math.min(100,cnt[k]/G[k].t*100)+'%'});
+ if(!picks.length){say.textContent='Tabak boş. Hadi başlayalım!';return}
+ var miss=Object.keys(G).filter(function(k){return cnt[k]<G[k].t});
+ if(!miss.length)say.textContent='Harika! Dengeli bir tabak hazırladınız.';
+ else if(cnt.sebze<2)say.textContent='Biraz daha sebze ekleyelim mi?';
+ else say.textContent=G[miss[0]].n+' grubundan bir şey eksik.';
+}
+document.getElementById('reset').onclick=function(){picks=[];draw()};
+var f=document.getElementById('f');f.addEventListener('submit',function(e){e.preventDefault();f.querySelector('.ok').hidden=false});
+})();
+</script>
+
+<a class="dw-home" href="./#ornekler" aria-label="Portföye geri dön"><span aria-hidden="true">←</span> Portföye dön</a>
+<style>
+.dw-home{position:fixed;z-index:9999;left:max(14px,env(safe-area-inset-left,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:99px;background:#18211c;color:#fff!important;font:600 14px/1 system-ui,-apple-system,"Segoe UI",sans-serif;text-decoration:none;box-shadow:0 10px 28px -10px rgba(0,0,0,.55),0 0 0 2px rgba(255,255,255,.9)}
+.dw-home:hover{background:#1d6a50}
+.dw-home:focus-visible{outline:3px solid #e9a727;outline-offset:3px}
+@media print{.dw-home{display:none}}
+</style>
+<script>
+(function(){
+  var target = location.protocol === 'file:' ? 'index.html#ornekler' : './#ornekler';
+  document.querySelectorAll('a.dw-home, a.dw-back').forEach(function(a){
+    a.setAttribute('href', target);
+    a.addEventListener('click', function(e){
+      try{
+        if (document.referrer && new URL(document.referrer).origin === location.origin && history.length > 1){
+          e.preventDefault(); history.back();
+        }
+      }catch(_){}
+    });
+  });
+})();
+</script>
+</body></html>

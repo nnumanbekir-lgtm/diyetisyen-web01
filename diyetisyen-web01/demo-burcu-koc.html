@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Dyt. Burcu Koç · PKOS ve Hormon Dengesi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap">
+<style>
+/* Layout: night-garden elegance. Centred hero with slow rotating cycle ring, symptom checklist, interactive cycle wheel, three pillars, fine-line lists */
+:root{
+ --bg:#1d1422; --bg-2:#271b2e; --card:#2d2035; --fg:#f3e9ef; --muted:#bba7b6; --line:#43314c;
+ --rose:#e8a98f; --rose-soft:#3b2632; --lilac:#c6a5dc; --gold:#e3c58a; --berry:#d9708c;
+ --disp:'Cormorant',Georgia,serif; --body:'Jost',system-ui,sans-serif;
+ color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-weight:300;font-size:17px;line-height:1.7;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--disp);font-weight:500;line-height:1.04;margin:0;text-wrap:balance}
+p{margin:0}
+strong,b{font-weight:500}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+.demo-bar{font-size:12.5px;color:var(--muted);border-bottom:1px solid var(--line)}
+.demo-bar .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding-block:8px}
+.demo-bar a{color:var(--rose);font-weight:500}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:22px}
+.logo{text-decoration:none;font-family:var(--disp);font-size:1.7rem;font-style:italic;letter-spacing:.01em}
+.logo span{font-style:normal;font-family:var(--body);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-left:10px;vertical-align:middle}
+.nl{display:flex;gap:28px;align-items:center;font-size:13px;letter-spacing:.16em;text-transform:uppercase}
+.nl a{text-decoration:none;color:var(--muted)}
+.nl a:hover{color:var(--fg)}
+.btn{display:inline-flex;align-items:center;gap:10px;font:inherit;font-weight:500;font-size:14px;letter-spacing:.12em;text-transform:uppercase;padding:15px 28px;border-radius:99px;border:1px solid var(--rose);cursor:pointer;text-decoration:none;background:var(--rose);color:var(--bg)}
+.btn.o{background:transparent;color:var(--rose)}
+.nl .btn{padding:10px 20px;font-size:12px;color:var(--bg)}
+
+/* hero */
+.hero{position:relative;overflow:hidden;text-align:center;padding-block:clamp(60px,10vw,130px)}
+.ring{position:absolute;left:50%;top:50%;width:min(760px,130vw);aspect-ratio:1;transform:translate(-50%,-50%);opacity:.55;pointer-events:none}
+.ring svg{width:100%;height:100%;animation:spin 120s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero .in{position:relative}
+.eyebrow{font-size:12.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--rose)}
+.hero h1{font-size:clamp(3rem,8.5vw,6.8rem);margin:18px auto 0;max-width:13ch}
+.hero h1 em{color:var(--rose)}
+.hero p.sub{max-width:50ch;margin:24px auto 0;color:var(--muted);font-size:1.1rem}
+.cta{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:34px}
+.meta{display:flex;justify-content:center;gap:12px 30px;flex-wrap:wrap;margin-top:40px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.meta span:before{content:"◦";color:var(--rose);margin-right:10px}
+
+section{padding-block:clamp(64px,9vw,110px)}
+.sh{text-align:center;max-width:680px;margin:0 auto 44px}
+.sh h2{font-size:clamp(2.4rem,5.6vw,4rem);margin-top:12px}
+.sh h2 em{color:var(--rose)}
+.sh p{color:var(--muted);margin-top:14px}
+
+/* symptoms */
+.sym{background:var(--bg-2);border-block:1px solid var(--line)}
+.checks{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:960px;margin:0 auto}
+.ck{position:relative}
+.ck input{position:absolute;opacity:0;pointer-events:none}
+.ck label{display:flex;align-items:center;gap:14px;border:1px solid var(--line);border-radius:18px;padding:16px 18px;cursor:pointer;font-size:15.5px;transition:border-color .2s,background .2s;height:100%}
+.ck label:before{content:"";flex:none;width:20px;height:20px;border-radius:50%;border:1px solid var(--muted);transition:all .2s}
+.ck input:checked+label{border-color:var(--rose);background:var(--rose-soft)}
+.ck input:checked+label:before{background:var(--rose);border-color:var(--rose);box-shadow:inset 0 0 0 4px var(--rose-soft)}
+.ck input:focus-visible+label{outline:2px solid var(--rose);outline-offset:3px}
+.tally{max-width:960px;margin:24px auto 0;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:22px}
+.tally b{font-family:var(--disp);font-size:3rem;font-weight:500;line-height:1;color:var(--rose);margin-right:14px;font-variant-numeric:tabular-nums}
+.tally p{color:var(--muted);font-size:15px;max-width:60ch}
+.tally .t{display:flex;align-items:center}
+
+/* wheel */
+.wheel{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.wheel>*{min-width:0}
+.wv{position:relative;max-width:440px;width:100%;justify-self:center}
+.wv svg{width:100%;height:auto;display:block}
+.seg{cursor:pointer;transition:opacity .2s}
+.seg:hover{opacity:.85}
+.wc{position:absolute;inset:0;display:grid;place-items:center;text-align:center;pointer-events:none}
+.wc b{display:block;font-family:var(--disp);font-size:clamp(3.4rem,8vw,4.8rem);line-height:.9;font-weight:500}
+.wc span{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.ph-name{font-family:var(--disp);font-size:clamp(2.2rem,4.6vw,3.2rem);font-style:italic;color:var(--rose)}
+.ph-days{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.ph-txt{color:var(--muted);margin-top:16px;max-width:48ch}
+.ph-list{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:0;border-top:1px solid var(--line)}
+.ph-list li{display:grid;grid-template-columns:130px 1fr;gap:16px;padding-block:13px;border-bottom:1px solid var(--line);font-size:15.5px}
+.ph-list span{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+input[type=range]{width:100%;accent-color:var(--rose);margin-top:22px}
+.disc{font-size:13px;color:var(--muted);margin-top:16px;font-style:italic}
+
+/* pillars */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.pl{padding:36px 30px;border-right:1px solid var(--line);display:grid;gap:12px;align-content:start;min-width:0}
+.pl:last-child{border-right:0}
+.pl svg{width:52px;height:52px}
+.pl h3{font-size:2rem}
+.pl p{color:var(--muted);font-size:15.5px}
+
+/* services */
+.svc{max-width:860px;margin:0 auto}
+.sv{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;padding-block:26px;border-bottom:1px solid var(--line)}
+.sv:first-child{border-top:1px solid var(--line)}
+.sv>*{min-width:0}
+.sv h3{font-size:clamp(1.8rem,3.4vw,2.4rem);font-style:italic}
+.sv p{color:var(--muted);margin-top:4px;font-size:15.5px}
+.sv .arr{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--rose);transition:all .2s}
+.sv:hover .arr{background:var(--rose);color:var(--bg);border-color:var(--rose)}
+
+/* about */
+.about{background:var(--bg-2);border-block:1px solid var(--line)}
+.about .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
+.about .wrap>*{min-width:0}
+.arch{aspect-ratio:3/4;border-radius:999px 999px 18px 18px;background:linear-gradient(170deg,#4a3352,#2d2035);border:1px solid var(--line);display:grid;place-items:center;position:relative;max-width:360px;width:100%;justify-self:center}
+.arch b{font-family:var(--disp);font-size:5rem;font-style:italic;font-weight:500;color:var(--rose)}
+.arch span{position:absolute;bottom:16px;font-size:12px;color:var(--muted);letter-spacing:.1em}
+blockquote{margin:0;font-family:var(--disp);font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.15;font-style:italic}
+blockquote:before{content:"“";display:block;font-size:4.5rem;line-height:.6;color:var(--rose)}
+.about p.b{color:var(--muted);margin-top:22px;max-width:60ch}
+.sig{margin-top:22px;display:flex;align-items:center;gap:14px;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.sig i{width:40px;height:1px;background:var(--rose)}
+
+/* faq + form */
+.fc{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.fc>*{min-width:0}
+details{border-bottom:1px solid var(--line);padding-block:18px}
+details:first-of-type{border-top:1px solid var(--line)}
+summary{cursor:pointer;font-family:var(--disp);font-size:1.45rem;list-style:none;display:flex;justify-content:space-between;gap:14px;line-height:1.25}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";font-family:var(--body);font-weight:300;color:var(--rose);font-size:1.4rem;line-height:1}
+details[open] summary:after{content:"–"}
+details p{color:var(--muted);margin-top:10px}
+form{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:clamp(24px,4vw,40px);display:grid;gap:14px}
+form h2{font-size:2.6rem}
+label{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.fl{display:grid;gap:6px}
+.r2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.r2>div{display:grid;gap:6px;min-width:0}
+input:not([type=range]):not([type=checkbox]),select,textarea{font:inherit;color:var(--fg);background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:10px 0;width:100%}
+select option{background:var(--bg)}
+input:focus,select:focus,textarea:focus{outline:none;border-bottom-color:var(--rose)}
+.k{font-size:12.5px;color:var(--muted)}
+.ok{color:var(--rose)}
+.info{display:grid;gap:12px;margin-top:30px;font-size:15.5px}
+.info span{display:block;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+footer{border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:26px}
+
+@media (max-width:900px){
+ .nl a:not(.btn){display:none}
+ .checks{grid-template-columns:1fr 1fr}
+ .wheel,.about .wrap,.fc{grid-template-columns:1fr}
+ .pillars{grid-template-columns:1fr}
+ .pl{border-right:0;border-bottom:1px solid var(--line)}
+ .pl:last-child{border-bottom:0}
+}
+@media (max-width:560px){
+ .checks{grid-template-columns:1fr}
+ .ph-list li{grid-template-columns:1fr;gap:2px}
+ .r2{grid-template-columns:1fr}
+ .logo span{display:none}
+}
+</style></head>
+<body>
+<div class="demo-bar"><div class="wrap"><span>Demo tasarım · Kişi ve bilgiler kurgusaldır</span><a class="dw-back" href="./#ornekler">← Diyetisyen Web portföyü</a></div></div>
+<nav><div class="wrap"><a class="logo" href="#">Burcu Koç<span>Diyetisyen</span></a>
+<div class="nl"><a href="#belirtiler">PKOS</a><a href="#dongu">Döngü</a><a href="#hizmetler">Hizmetler</a><a class="btn" href="#randevu">Randevu</a></div></div></nav>
+
+<header class="hero">
+<div class="ring" aria-hidden="true"><svg viewBox="0 0 400 400">
+<circle cx="200" cy="200" r="190" fill="none" stroke="#43314c" stroke-width="1"/>
+<circle cx="200" cy="200" r="150" fill="none" stroke="#43314c" stroke-width="1" stroke-dasharray="2 6"/>
+<g fill="#e8a98f"><circle cx="200" cy="10" r="5"/><circle cx="390" cy="200" r="3"/><circle cx="200" cy="390" r="4"/><circle cx="10" cy="200" r="3"/></g>
+<g fill="#c6a5dc" opacity=".7"><circle cx="334" cy="66" r="2.5"/><circle cx="66" cy="334" r="2.5"/><circle cx="334" cy="334" r="2.5"/><circle cx="66" cy="66" r="2.5"/></g>
+</svg></div>
+<div class="wrap in">
+<p class="eyebrow">PKOS · Tiroit · Hormon dengesi</p>
+<h1>Hormonlarınızla <em>barışık</em> bir sofra</h1>
+<p class="sub">Polikistik over sendromu, tiroit ve adet düzensizliği yaşayan kadınlar için, kan şekeri dengesini önceleyen kişiye özel beslenme danışmanlığı.</p>
+<div class="cta"><a class="btn" href="#randevu">Görüşme planlayın</a><a class="btn o" href="#dongu">Döngünüzü keşfedin</a></div>
+<div class="meta"><span>Etimesgut, Ankara</span><span>Yüz yüze ve online</span><span>Kadın doğum takibinizle uyumlu</span></div>
+</div>
+</header>
+
+<section class="sym" id="belirtiler"><div class="wrap">
+<div class="sh"><p class="eyebrow">Kendinizi dinleyin</p><h2>Bunlardan hangileri <em>size</em> tanıdık?</h2><p>İşaretledikleriniz, ilk görüşmemizde konuşacağımız başlıklar olur. Bu liste tanı koymaz.</p></div>
+<div class="checks" id="checks"></div>
+<div class="tally"><div class="t"><b id="cnt">0</b><p id="ctxt">Henüz bir şey seçmediniz.</p></div><a class="btn o" href="#randevu">Bunları görüşelim</a></div>
+</div></section>
+
+<section id="dongu"><div class="wrap">
+<div class="sh"><p class="eyebrow">Döngü rehberi</p><h2>Döngünüzün <em>dört</em> mevsimi</h2><p>Döngü boyunca enerji ve iştah değişir. Bir döneme dokunun ya da günü kaydırın.</p></div>
+<div class="wheel">
+<div class="wv">
+<svg viewBox="0 0 400 400" id="wsvg" role="img" aria-label="28 günlük döngü çarkı"></svg>
+<div class="wc"><div><span>Döngünün</span><b id="dno">8</b><span>günü</span></div></div>
+</div>
+<div>
+<p class="ph-name" id="pn">Foliküler dönem</p>
+<p class="ph-days" id="pd">6–13. gün</p>
+<p class="ph-txt" id="pt"></p>
+<ul class="ph-list"><li><span>Odak</span><div id="p1"></div></li><li><span>Sofraya</span><div id="p2"></div></li><li><span>Hareket</span><div id="p3"></div></li></ul>
+<label for="day" style="display:block;margin-top:22px">Döngü günü</label>
+<input id="day" type="range" min="1" max="28" value="8">
+<p class="disc">28 günlük örnek döngü üzerinden genel bilgilerdir. PKOS'ta döngüler düzensiz olabilir; planlar kişiye göre hazırlanır.</p>
+</div>
+</div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+<div class="sh"><p class="eyebrow">Yaklaşımım</p><h2>Üç temel üzerine</h2></div>
+<div class="pillars">
+<div class="pl"><svg viewBox="0 0 52 52" fill="none" stroke="#e8a98f" stroke-width="1.3"><path d="M4 34 C14 34 14 18 26 18 S38 34 48 34"/><path d="M4 40h44" stroke="#43314c"/></svg><h3>Kan şekeri dengesi</h3><p>Lif, protein ve sağlıklı yağla kurulan öğünler insülin dalgalanmalarını azaltır.</p></div>
+<div class="pl"><svg viewBox="0 0 52 52" fill="none" stroke="#e8a98f" stroke-width="1.3"><circle cx="26" cy="26" r="18"/><path d="M26 8c-8 8-8 28 0 36M26 8c8 8 8 28 0 36"/></svg><h3>Akdeniz tipi sofra</h3><p>Zeytinyağı, baklagil, sebze ve balık ağırlıklı, inflamasyonu destekleyici bir düzen.</p></div>
+<div class="pl"><svg viewBox="0 0 52 52" fill="none" stroke="#e8a98f" stroke-width="1.3"><path d="M36 10a18 18 0 1 0 6 24 14 14 0 0 1-6-24z"/><circle cx="40" cy="12" r="1.5" fill="#e8a98f"/></svg><h3>Uyku ve hareket</h3><p>Düzenli uyku ve haftalık hareket hedefi, beslenme planının ayrılmaz parçasıdır.</p></div>
+</div>
+</div></section>
+
+<section id="hizmetler" style="padding-top:0"><div class="wrap">
+<div class="sh"><p class="eyebrow">Hizmetler</p><h2>Birlikte çalışabileceğimiz konular</h2></div>
+<div class="svc">
+<div class="sv"><div><h3>PKOS beslenmesi</h3><p>İnsülin duyarlılığını destekleyen öğün düzeni ve porsiyon planı.</p></div><span class="arr">→</span></div>
+<div class="sv"><div><h3>Tiroit ve beslenme</h3><p>Hashimoto ve hipotiroidide ilaç saatine uyumlu öğün planlaması.</p></div><span class="arr">→</span></div>
+<div class="sv"><div><h3>Adet düzensizliği</h3><p>Kilo, kan şekeri ve beslenme düzeninin döngüye etkisinin değerlendirilmesi.</p></div><span class="arr">→</span></div>
+<div class="sv"><div><h3>Gebelik planlayanlar</h3><p>Doğurganlık sürecinde hekim takibine eşlik eden beslenme düzeni.</p></div><span class="arr">→</span></div>
+</div></div></section>
+
+<section class="about"><div class="wrap">
+<div class="arch"><b>BK</b><span>Fotoğraf alanı</span></div>
+<div><p class="eyebrow">Hakkımda</p>
+<blockquote style="margin-top:18px">PKOS bir yasak listesiyle değil, bedeninizi tanıyarak yönetilir.</blockquote>
+<p class="b">Beslenme ve Diyetetik lisansımın ardından kadın sağlığı ve hormon dengesi üzerine çalışıyorum. Kadın doğum ve endokrinoloji takibinize eşlik eden, kan şekeri dengesini önceleyen ve döngünüzdeki değişimleri dikkate alan planlar hazırlıyorum.</p>
+<div class="sig"><i></i>Burcu Koç · Etimesgut</div>
+</div>
+</div></section>
+
+<section id="randevu"><div class="wrap fc">
+<div><p class="eyebrow">Sık sorulanlar</p><h2 style="font-size:clamp(2.4rem,5vw,3.4rem);margin:12px 0 28px">Merak edilenler</h2>
+<details><summary>PKOS'ta kilo vermek neden zor?</summary><p>İnsülin direnci açlık hissini ve yağ depolamayı etkileyebilir. Bu nedenle kalori kısıtlamasından çok öğün düzeni ve kan şekeri dengesi önemlidir.</p></details>
+<details><summary>Gluten ve süt ürünlerini bırakmalı mıyım?</summary><p>Herkes için gerekli değildir. Tahlilleriniz ve şikâyetleriniz değerlendirilerek kişiye özel karar verilir.</p></details>
+<details><summary>Hangi tahlilleri getirmeliyim?</summary><p>Varsa açlık şekeri, insülin, HbA1c, tiroit ve hormon tahlilleriniz değerlendirmeyi kolaylaştırır.</p></details>
+<div class="info"><div><span>Adres</span>Örnek Mah. Örnek Cad. No: 1, Etimesgut / Ankara</div><div><span>Telefon</span>0312 000 00 00</div><div><span>Saatler</span>Hafta içi 10:00–19:00 · Cumartesi 10:00–15:00</div></div>
+</div>
+<form id="f"><h2>Randevu</h2>
+<div class="r2"><div><label for="ad">Ad soyad</label><input id="ad" required></div><div><label for="tel">Telefon</label><input id="tel" type="tel" required placeholder="05xx xxx xx xx"></div></div>
+<div class="r2"><div><label for="kn">Konu</label><select id="kn"><option>PKOS</option><option>Tiroit</option><option>Adet düzensizliği</option><option>Gebelik planlama</option></select></div><div><label for="gs">Görüşme</label><select id="gs"><option>Yüz yüze</option><option>Online</option></select></div></div>
+<div class="fl"><label for="msg">Not</label><textarea id="msg" rows="3"></textarea></div>
+<p class="k">Sağlık bilgileriniz özel nitelikli kişisel veridir ve yalnızca danışmanlık için kullanılır. KVKK aydınlatma metni bu alana eklenir.</p>
+<button class="btn" type="submit" style="justify-self:start">Gönder</button><p class="ok" hidden>Bu bir demo. Gerçek sitede talebiniz diyetisyene iletilir.</p>
+</form>
+</div></section>
+
+<footer><div class="wrap"><span>© 2026 Dyt. Burcu Koç · Bu sitedeki bilgiler tanı ve tedavi yerine geçmez.</span><span>Tasarım: Diyetisyen Web</span></div></footer>
+<script>
+(function(){
+var S=['Düzensiz ya da seyrek adet','Tatlı krizleri','Bel çevresinde kilo artışı','Yemekten sonra halsizlik','Ciltte sivilcelenme','İstenmeyen tüylenme','Saç dökülmesi','Uyku düzensizliği','Sürekli yorgunluk'];
+var box=document.getElementById('checks');
+S.forEach(function(s,i){var d=document.createElement('div');d.className='ck';d.innerHTML='<input type="checkbox" id="s'+i+'"><label for="s'+i+'">'+s+'</label>';box.appendChild(d)});
+box.addEventListener('change',function(){var n=box.querySelectorAll('input:checked').length;document.getElementById('cnt').textContent=n;
+document.getElementById('ctxt').textContent=n===0?'Henüz bir şey seçmediniz.':n<3?'Bu başlıkları ilk görüşmede birlikte ele alabiliriz.':'Birden fazla belirti seçtiniz. Hekiminizle hormon değerlendirmesi yapmanızı ve beslenmenizi birlikte planlamayı öneririm.'});
+
+var P=[{n:'Menstrüasyon',d:'1–5. gün',a:1,b:5,c:'#d9708c',t:'Enerji düşük olabilir. Bedeninizi zorlamadan, besleyici ve sıcak öğünler iyi gelir.',f:'Demir ve sıvı',s:'Mercimek çorbası, pekmez, yeşil yapraklılar',m:'Yürüyüş, esneme'},
+{n:'Foliküler dönem',d:'6–13. gün',a:6,b:13,c:'#e3c58a',t:'Enerji yükselir, iştah genellikle daha dengelidir. Yeni alışkanlıklara başlamak için iyi bir dönem.',f:'Protein ve lif',s:'Yumurta, baklagil, tam tahıllar, taze sebze',m:'Kuvvet ve tempolu antrenman'},
+{n:'Yumurtlama',d:'14. gün civarı',a:14,b:15,c:'#e8a98f',t:'Enerji en yüksek seviyede olabilir. Bol sebze ve su ile hafif öğünler önerilir.',f:'Antioksidanlar',s:'Renkli sebzeler, meyve, zeytinyağı',m:'Yüksek tempolu antrenman'},
+{n:'Luteal dönem',d:'16–28. gün',a:16,b:28,c:'#c6a5dc',t:'Tatlı isteği ve iştah artabilir. Kan şekerini dengede tutan ara öğünler bu dönemde çok önemlidir.',f:'Magnezyum ve kan şekeri dengesi',s:'Ceviz, kabak çekirdeği, bitter çikolata, yoğurt',m:'Pilates, yoga, yürüyüş'}];
+var svg=document.getElementById('wsvg'),NS='http://www.w3.org/2000/svg';
+function pt(r,deg){var a=(deg-90)*Math.PI/180;return[200+r*Math.cos(a),200+r*Math.sin(a)]}
+function arc(r1,r2,d1,d2){var a=pt(r2,d1),b=pt(r2,d2),c=pt(r1,d2),e=pt(r1,d1),l=(d2-d1)>180?1:0;return'M'+a+' A'+r2+' '+r2+' 0 '+l+' 1 '+b+' L'+c+' A'+r1+' '+r1+' 0 '+l+' 0 '+e+'Z'}
+P.forEach(function(p,i){var d1=(p.a-1)/28*360+1,d2=p.b/28*360-1;var g=document.createElementNS(NS,'path');g.setAttribute('d',arc(120,180,d1,d2));g.setAttribute('fill',p.c);g.setAttribute('class','seg');g.setAttribute('data-i',i);g.addEventListener('click',function(){set(p.a+Math.floor((p.b-p.a)/2))});svg.appendChild(g)});
+for(var k=1;k<=28;k++){var q=pt(196,(k-.5)/28*360);var c=document.createElementNS(NS,'circle');c.setAttribute('cx',q[0]);c.setAttribute('cy',q[1]);c.setAttribute('r',k%7===0?2.6:1.4);c.setAttribute('fill','#bba7b6');svg.appendChild(c)}
+var mk=document.createElementNS(NS,'circle');mk.setAttribute('r',11);mk.setAttribute('fill','#1d1422');mk.setAttribute('stroke','#f3e9ef');mk.setAttribute('stroke-width','3');svg.appendChild(mk);
+var r=document.getElementById('day');
+function set(d){r.value=d;var p=P.filter(function(x){return d>=x.a&&d<=x.b})[0];
+document.getElementById('dno').textContent=d;document.getElementById('pn').textContent=p.n;document.getElementById('pd').textContent=p.d;document.getElementById('pt').textContent=p.t;
+document.getElementById('p1').textContent=p.f;document.getElementById('p2').textContent=p.s;document.getElementById('p3').textContent=p.m;
+var q=pt(150,(d-.5)/28*360);mk.setAttribute('cx',q[0]);mk.setAttribute('cy',q[1]);
+svg.querySelectorAll('.seg').forEach(function(s){s.style.opacity=(+s.dataset.i===P.indexOf(p))?1:.35})}
+r.addEventListener('input',function(){set(+r.value)});set(8);
+var f=document.getElementById('f');f.addEventListener('submit',function(e){e.preventDefault();f.querySelector('.ok').hidden=false});
+})();
+</script>
+
+<a class="dw-home" href="./#ornekler" aria-label="Portföye geri dön"><span aria-hidden="true">←</span> Portföye dön</a>
+<style>
+.dw-home{position:fixed;z-index:9999;left:max(14px,env(safe-area-inset-left,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:99px;background:#18211c;color:#fff!important;font:600 14px/1 system-ui,-apple-system,"Segoe UI",sans-serif;text-decoration:none;box-shadow:0 10px 28px -10px rgba(0,0,0,.55),0 0 0 2px rgba(255,255,255,.9)}
+.dw-home:hover{background:#1d6a50}
+.dw-home:focus-visible{outline:3px solid #e9a727;outline-offset:3px}
+@media print{.dw-home{display:none}}
+</style>
+<script>
+(function(){
+  var target = location.protocol === 'file:' ? 'index.html#ornekler' : './#ornekler';
+  document.querySelectorAll('a.dw-home, a.dw-back').forEach(function(a){
+    a.setAttribute('href', target);
+    a.addEventListener('click', function(e){
+      try{
+        if (document.referrer && new URL(document.referrer).origin === location.origin && history.length > 1){
+          e.preventDefault(); history.back();
+        }
+      }catch(_){}
+    });
+  });
+})();
+</script>
+</body></html>
